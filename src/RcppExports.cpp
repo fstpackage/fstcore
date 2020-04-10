@@ -186,24 +186,23 @@ RcppExport SEXP _fstcore_fsthasher(SEXP rawVecSEXP, SEXP seedSEXP, SEXP blockHas
     return rcpp_result_gen;
 }
 // fstcomp
-SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_container);
-static SEXP _fstcore_fstcomp_try(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP compressionSEXP, SEXP hashSEXP, SEXP r_containerSEXP) {
+SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash);
+static SEXP _fstcore_fstcomp_try(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP compressionSEXP, SEXP hashSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::traits::input_parameter< SEXP >::type rawVec(rawVecSEXP);
     Rcpp::traits::input_parameter< SEXP >::type compressor(compressorSEXP);
     Rcpp::traits::input_parameter< SEXP >::type compression(compressionSEXP);
     Rcpp::traits::input_parameter< SEXP >::type hash(hashSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type r_container(r_containerSEXP);
-    rcpp_result_gen = Rcpp::wrap(fstcomp(rawVec, compressor, compression, hash, r_container));
+    rcpp_result_gen = Rcpp::wrap(fstcomp(rawVec, compressor, compression, hash));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP _fstcore_fstcomp(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP compressionSEXP, SEXP hashSEXP, SEXP r_containerSEXP) {
+RcppExport SEXP _fstcore_fstcomp(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP compressionSEXP, SEXP hashSEXP) {
     SEXP rcpp_result_gen;
     {
         Rcpp::RNGScope rcpp_rngScope_gen;
-        rcpp_result_gen = PROTECT(_fstcore_fstcomp_try(rawVecSEXP, compressorSEXP, compressionSEXP, hashSEXP, r_containerSEXP));
+        rcpp_result_gen = PROTECT(_fstcore_fstcomp_try(rawVecSEXP, compressorSEXP, compressionSEXP, hashSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
     if (rcpp_isInterrupt_gen) {
@@ -224,21 +223,20 @@ RcppExport SEXP _fstcore_fstcomp(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP comp
     return rcpp_result_gen;
 }
 // fstdecomp
-SEXP fstdecomp(SEXP rawVec, SEXP r_container);
-static SEXP _fstcore_fstdecomp_try(SEXP rawVecSEXP, SEXP r_containerSEXP) {
+SEXP fstdecomp(SEXP rawVec);
+static SEXP _fstcore_fstdecomp_try(SEXP rawVecSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::traits::input_parameter< SEXP >::type rawVec(rawVecSEXP);
-    Rcpp::traits::input_parameter< SEXP >::type r_container(r_containerSEXP);
-    rcpp_result_gen = Rcpp::wrap(fstdecomp(rawVec, r_container));
+    rcpp_result_gen = Rcpp::wrap(fstdecomp(rawVec));
     return rcpp_result_gen;
 END_RCPP_RETURN_ERROR
 }
-RcppExport SEXP _fstcore_fstdecomp(SEXP rawVecSEXP, SEXP r_containerSEXP) {
+RcppExport SEXP _fstcore_fstdecomp(SEXP rawVecSEXP) {
     SEXP rcpp_result_gen;
     {
         Rcpp::RNGScope rcpp_rngScope_gen;
-        rcpp_result_gen = PROTECT(_fstcore_fstdecomp_try(rawVecSEXP, r_containerSEXP));
+        rcpp_result_gen = PROTECT(_fstcore_fstdecomp_try(rawVecSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
     if (rcpp_isInterrupt_gen) {
@@ -401,8 +399,8 @@ static int _fstcore_RcppExport_validate(const char* sig) {
         signatures.insert("SEXP(*fstmetadata)(Rcpp::String)");
         signatures.insert("SEXP(*fstretrieve)(Rcpp::String,SEXP,SEXP,SEXP)");
         signatures.insert("SEXP(*fsthasher)(SEXP,SEXP,SEXP)");
-        signatures.insert("SEXP(*fstcomp)(SEXP,SEXP,SEXP,SEXP,SEXP)");
-        signatures.insert("SEXP(*fstdecomp)(SEXP,SEXP)");
+        signatures.insert("SEXP(*fstcomp)(SEXP,SEXP,SEXP,SEXP)");
+        signatures.insert("SEXP(*fstdecomp)(SEXP)");
         signatures.insert("SEXP(*getnrofthreads)()");
         signatures.insert("int(*setnrofthreads)(SEXP)");
         signatures.insert("SEXP(*hasopenmp)()");
@@ -434,8 +432,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_fstcore_fstmetadata", (DL_FUNC) &_fstcore_fstmetadata, 1},
     {"_fstcore_fstretrieve", (DL_FUNC) &_fstcore_fstretrieve, 4},
     {"_fstcore_fsthasher", (DL_FUNC) &_fstcore_fsthasher, 3},
-    {"_fstcore_fstcomp", (DL_FUNC) &_fstcore_fstcomp, 5},
-    {"_fstcore_fstdecomp", (DL_FUNC) &_fstcore_fstdecomp, 2},
+    {"_fstcore_fstcomp", (DL_FUNC) &_fstcore_fstcomp, 4},
+    {"_fstcore_fstdecomp", (DL_FUNC) &_fstcore_fstdecomp, 1},
     {"_fstcore_getnrofthreads", (DL_FUNC) &_fstcore_getnrofthreads, 0},
     {"_fstcore_setnrofthreads", (DL_FUNC) &_fstcore_setnrofthreads, 1},
     {"_fstcore_hasopenmp", (DL_FUNC) &_fstcore_hasopenmp, 0},

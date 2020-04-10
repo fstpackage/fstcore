@@ -66,14 +66,14 @@ public:
 
 class TypeFactory : public ITypeFactory
 {
-  SEXP r_container;
+  const SEXP* r_container;
   bool has_blob = false;
 
 public:
 
   TypeFactory(const SEXP &r_container)
   {
-    this->r_container = r_container;
+    this->r_container = &r_container;
   }
 
   ~TypeFactory() { }
@@ -89,7 +89,8 @@ public:
       Rf_error("Blob container can be used only once");
     }
 
-    return new BlobContainer(size, r_container);
+    this->has_blob = true;
+    return new BlobContainer(size, *r_container);
   }
 };
 

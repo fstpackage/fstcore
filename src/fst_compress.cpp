@@ -79,13 +79,18 @@ SEXP fsthasher(SEXP rawVec, SEXP seed, SEXP blockHash)
 }
 
 
-SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_container)
+SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
 {
+  // avoid using PROTECT statements in C++ classes (which generate rchk errors)
+  // this PROTECTED container can be used to hold any R object safely
+  SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
+
   std::unique_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
   COMPRESSION_ALGORITHM algo;
 
   if (!Rf_isLogical(hash))
   {
+    UNPROTECT(1);  // r_container
     Rf_error("Please specify true of false for parameter hash.");
   }
 
@@ -100,7 +105,7 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
     algo = COMPRESSION_ALGORITHM::ALGORITHM_ZSTD;
   } else
   {
-    UNPROTECT(2);  // lz4_str and zstd_str
+    UNPROTECT(3);  // r_container, lz4_str and zstd_str
     Rf_error("Unknown compression algorithm selected");
   }
 
@@ -120,19 +125,28 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
   }
   catch(const std::runtime_error& e)
   {
+    UNPROTECT(1);  // r_container
     Rf_error(e.what());
   }
   catch ( ... )
   {
+    UNPROTECT(1);  // r_container
     Rf_error("Unexpected error detected while compressing data.");
   }
+
+  UNPROTECT(1);  // r_container
 
   return VECTOR_ELT(r_container, 0);
 }
 
 
-SEXP fstdecomp(SEXP rawVec, SEXP r_container)
+SEXP fstdecomp(SEXP rawVec)
 {
+  // avoid using PROTECT statements in C++ classes (which generate rchk errors)
+  // this PROTECTED container can be used to hold any R object safely
+  SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
+
+  // TODO: UBSAN warning generated here
   TypeFactory* type_factory = new TypeFactory(r_container);
   std::unique_ptr<TypeFactory> typeFactoryP(type_factory);
 
@@ -153,8 +167,11 @@ SEXP fstdecomp(SEXP rawVec, SEXP r_container)
   }
   catch ( ... )
   {
+    UNPROTECT(1);  // r_container
     Rf_error("Error detected while decompressing data.");
   }
+
+  UNPROTECT(1);  // r_container
 
   return VECTOR_ELT(r_container, 0);
 }
