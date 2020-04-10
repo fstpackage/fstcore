@@ -1,0 +1,19 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+\.o$
+^_pkgdown\.yml$
+^CONDUCT\.md$
+\.dll$
+^docs$
+\.a$
+\.Rmd$
+LZ4/LICENSE$
+\.md$
+^docs$
+\.TMP$
+\.png$
+\.yml$
+^dataset\.fst$
+^res - readme\.fst$
+^_pkgdown\.yml$
+^CRAN-RELEASE$
