@@ -36,7 +36,7 @@ class BlobContainer : public IBlobContainer
 
 public:
 
-  BlobContainer(unsigned long long size, SEXP r_container)
+  BlobContainer(unsigned long long size, const SEXP &r_container)
   {
     // PROTECT raw vector by containing it in a list object
     SEXP raw_vec = PROTECT(Rf_allocVector(RAWSXP, size));
@@ -71,7 +71,7 @@ class TypeFactory : public ITypeFactory
 
 public:
 
-  TypeFactory(SEXP r_container)
+  TypeFactory(const SEXP &r_container)
   {
     this->r_container = r_container;
   }
