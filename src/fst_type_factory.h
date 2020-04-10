@@ -31,14 +31,21 @@
 
 class BlobContainer : public IBlobContainer
 {
-  SEXP raw_vec;
+  unsigned char* raw_vecp;
+  unsigned long long length; 
 
 public:
+
   BlobContainer(unsigned long long size, SEXP r_container)
   {
     // PROTECT raw vector by containing it in a list object
-    raw_vec = Rf_allocVector(RAWSXP, size);
+    SEXP raw_vec = PROTECT(Rf_allocVector(RAWSXP, size));
     SET_VECTOR_ELT(r_container, 0, raw_vec);
+    
+    this->raw_vecp = RAW(raw_vec);
+    this->length = Rf_xlength(raw_vec);
+
+    UNPROTECT(1);
   }
 
   ~BlobContainer()
@@ -47,17 +54,12 @@ public:
 
   unsigned char* Data()
   {
-    return RAW(raw_vec);
-  }
-
-  SEXP RVector()
-  {
-    return raw_vec;
+    return raw_vecp;
   }
 
   unsigned long long Size()
   {
-    return Rf_xlength(raw_vec);
+    return length;
   }
 };
 
