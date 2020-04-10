@@ -2,15 +2,13 @@
 <img src="fst.png" align="right" height="196" width="196" />
 
 [![Linux/OSX Build
-Status](https://travis-ci.org/fstpackage/fst.svg?branch=develop)](https://travis-ci.org/fstpackage/fst)
-[![Windows Build
-status](https://ci.appveyor.com/api/projects/status/6g6kp8onpb26jhnm/branch/develop?svg=true)](https://ci.appveyor.com/project/fstpackage/fst/branch/develop)
+Status](https://travis-ci.org/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.org/fstpackage/fstcore)
 [![License: AGPL
 v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fst)](https://cran.r-project.org/package=fst)
-[![codecov](https://codecov.io/gh/fstpackage/fst/branch/develop/graph/badge.svg)](https://codecov.io/gh/fstpackage/fst)
-[![downloads](http://cranlogs.r-pkg.org/badges/fst)](http://cran.rstudio.com/web/packages/fst/index.html)
-[![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fst)](http://cran.rstudio.com/web/packages/fst/index.html)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/fstcore)](https://cran.r-project.org/package=fstcore)
+[![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://codecov.io/gh/fstpackage/fstcore)
+[![downloads](http://cranlogs.r-pkg.org/badges/fstcore)](http://cran.rstudio.com/web/packages/fstcore/index.html)
+[![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore)](http://cran.rstudio.com/web/packages/fstcore/index.html)
 
 
 ## Overview
