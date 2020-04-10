@@ -136,9 +136,10 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
 
 SEXP fstdecomp(SEXP rawVec, SEXP r_container)
 {
-  std::unique_ptr<ITypeFactory> typeFactoryP(new TypeFactory(r_container));
+  TypeFactory* type_factory = new TypeFactory(r_container);
+  std::unique_ptr<ITypeFactory> typeFactoryP(type_factory);
 
-  FstCompressor fstcompressor((ITypeFactory*) typeFactoryP.get());
+  FstCompressor fstcompressor((ITypeFactory*) type_factory);
 
   unsigned long long vecLength = Rf_xlength(rawVec);
   unsigned char* data = (unsigned char*) (RAW(rawVec));
