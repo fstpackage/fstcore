@@ -85,7 +85,7 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
   // this PROTECTED container can be used to hold any R object safely
   SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
 
-  std::unique_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
+  std::shared_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
   COMPRESSION_ALGORITHM algo;
 
   if (!Rf_isLogical(hash))
@@ -148,7 +148,7 @@ SEXP fstdecomp(SEXP rawVec)
 
   // TODO: UBSAN warning generated here
   TypeFactory* type_factory = new TypeFactory(r_container);
-  std::unique_ptr<TypeFactory> typeFactoryP(type_factory);
+  std::shared_ptr<TypeFactory> typeFactoryP(type_factory);
 
   FstCompressor fstcompressor((ITypeFactory*) type_factory);
 
