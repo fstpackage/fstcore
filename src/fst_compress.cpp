@@ -134,7 +134,7 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
 SEXP fstdecomp(SEXP rawVec, SEXP r_container)
 {
   TypeFactory* type_factory = new TypeFactory(r_container);
-  std::unique_ptr<ITypeFactory> typeFactoryP(type_factory);
+  std::unique_ptr<TypeFactory> typeFactoryP(type_factory);
 
   FstCompressor fstcompressor((ITypeFactory*) type_factory);
 
