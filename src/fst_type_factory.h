@@ -67,7 +67,6 @@ public:
 class TypeFactory : public ITypeFactory
 {
   SEXP r_container;
-  bool has_blob = false;
 
 public:
 
@@ -85,11 +84,6 @@ public:
    */
   IBlobContainer* CreateBlobContainer(unsigned long long size)
   {
-    if (this->has_blob) {
-      Rf_error("Blob container can be used only once");
-    }
-
-    this->has_blob = true;
     return new BlobContainer(size, r_container);
   }
 };

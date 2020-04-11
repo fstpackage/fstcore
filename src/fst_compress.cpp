@@ -85,13 +85,13 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
   // this PROTECTED container can be used to hold any R object safely
   SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
 
-  std::shared_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
+  std::unique_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
   COMPRESSION_ALGORITHM algo;
 
   if (!Rf_isLogical(hash))
   {
     UNPROTECT(1);  // r_container
-    Rf_error("Please specify true of false for parameter hash.");
+    Rcpp::stop("Please specify true of false for parameter hash.");
   }
 
   SEXP lz4_str  = PROTECT(Rf_mkChar("LZ4"));
@@ -106,7 +106,7 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
   } else
   {
     UNPROTECT(3);  // r_container, lz4_str and zstd_str
-    Rf_error("Unknown compression algorithm selected");
+    Rcpp::stop("Unknown compression algorithm selected");
   }
 
   UNPROTECT(2);  // lz4_str and zstd_str
@@ -126,12 +126,12 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
   catch(const std::runtime_error& e)
   {
     UNPROTECT(1);  // r_container
-    Rf_error(e.what());
+    Rcpp::stop(e.what());
   }
   catch ( ... )
   {
     UNPROTECT(1);  // r_container
-    Rf_error("Unexpected error detected while compressing data.");
+    Rcpp::stop("Unexpected error detected while compressing data.");
   }
 
   UNPROTECT(1);  // r_container
@@ -148,7 +148,7 @@ SEXP fstdecomp(SEXP rawVec)
 
   // TODO: UBSAN warning generated here
   TypeFactory* type_factory = new TypeFactory(r_container);
-  std::shared_ptr<TypeFactory> typeFactoryP(type_factory);
+  std::unique_ptr<TypeFactory> typeFactoryP(type_factory);
 
   FstCompressor fstcompressor((ITypeFactory*) type_factory);
 
@@ -163,12 +163,12 @@ SEXP fstdecomp(SEXP rawVec)
   }
   catch(const std::runtime_error& e)
   {
-    Rf_error(e.what());
+    Rcpp::stop(e.what());
   }
   catch ( ... )
   {
     UNPROTECT(1);  // r_container
-    Rf_error("Error detected while decompressing data.");
+    Rcpp::stop("Error detected while decompressing data.");
   }
 
   UNPROTECT(1);  // r_container
