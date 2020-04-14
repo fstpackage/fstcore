@@ -25,6 +25,8 @@
 * Update NEWS.md with the release date
 * Merge branch release into master
 * Tag the release on Github
+* Build docs folder using pkgdown::build_site()
+* Manually replace the source code link in index.html
 * Commit the fstpackage.github.io repository with the latest docs
 * Merge branch master into release
 * Go to the repository release page and create a new release with tag version vx.y.z.
