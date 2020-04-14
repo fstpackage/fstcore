@@ -79,14 +79,19 @@ SEXP fsthasher(SEXP rawVec, SEXP seed, SEXP blockHash)
 }
 
 
-SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_container)
+SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
 {
+  // avoid using PROTECT statements in C++ classes (which generate rchk errors)
+  // this PROTECTED container can be used to hold any R object safely
+  SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
+
   std::unique_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
   COMPRESSION_ALGORITHM algo;
 
   if (!Rf_isLogical(hash))
   {
-    Rf_error("Please specify true of false for parameter hash.");
+    UNPROTECT(1);  // r_container
+    Rcpp::stop("Please specify true of false for parameter hash.");
   }
 
   SEXP lz4_str  = PROTECT(Rf_mkChar("LZ4"));
@@ -100,8 +105,8 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
     algo = COMPRESSION_ALGORITHM::ALGORITHM_ZSTD;
   } else
   {
-    UNPROTECT(2);  // lz4_str and zstd_str
-    Rf_error("Unknown compression algorithm selected");
+    UNPROTECT(3);  // r_container, lz4_str and zstd_str
+    Rcpp::stop("Unknown compression algorithm selected");
   }
 
   UNPROTECT(2);  // lz4_str and zstd_str
@@ -120,25 +125,32 @@ SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_c
   }
   catch(const std::runtime_error& e)
   {
-    Rf_error(e.what());
+    UNPROTECT(1);  // r_container
+    Rcpp::stop(e.what());
   }
   catch ( ... )
   {
-    Rf_error("Unexpected error detected while compressing data.");
+    UNPROTECT(1);  // r_container
+    Rcpp::stop("Unexpected error detected while compressing data.");
   }
 
-  SEXP resVec = ((BlobContainer*)(blobContainerP.get()))->RVector();
+  UNPROTECT(1);  // r_container
 
-  // IBlobContainer will be destructed upon exiting function
-  return resVec;
+  return VECTOR_ELT(r_container, 0);
 }
 
 
-SEXP fstdecomp(SEXP rawVec, SEXP r_container)
+SEXP fstdecomp(SEXP rawVec)
 {
-  std::unique_ptr<ITypeFactory> typeFactoryP(new TypeFactory(r_container));
+  // avoid using PROTECT statements in C++ classes (which generate rchk errors)
+  // this PROTECTED container can be used to hold any R object safely
+  SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
 
-  FstCompressor fstcompressor((ITypeFactory*) typeFactoryP.get());
+  // TODO: UBSAN warning generated here
+  TypeFactory* type_factory = new TypeFactory(r_container);
+  std::unique_ptr<TypeFactory> typeFactoryP(type_factory);
+
+  FstCompressor fstcompressor((ITypeFactory*) type_factory);
 
   unsigned long long vecLength = Rf_xlength(rawVec);
   unsigned char* data = (unsigned char*) (RAW(rawVec));
@@ -151,15 +163,16 @@ SEXP fstdecomp(SEXP rawVec, SEXP r_container)
   }
   catch(const std::runtime_error& e)
   {
-    Rf_error(e.what());
+    Rcpp::stop(e.what());
   }
   catch ( ... )
   {
-    Rf_error("Error detected while decompressing data.");
+    UNPROTECT(1);  // r_container
+    Rcpp::stop("Error detected while decompressing data.");
   }
 
-  SEXP resVec = resultContainerP->RVector();
+  UNPROTECT(1);  // r_container
 
-  return resVec;
+  return VECTOR_ELT(r_container, 0);
 }
 

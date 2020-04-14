@@ -129,17 +129,17 @@ namespace fstcore {
         return Rcpp::as<SEXP >(rcpp_result_gen);
     }
 
-    inline SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash, SEXP r_container) {
-        typedef SEXP(*Ptr_fstcomp)(SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash) {
+        typedef SEXP(*Ptr_fstcomp)(SEXP,SEXP,SEXP,SEXP);
         static Ptr_fstcomp p_fstcomp = NULL;
         if (p_fstcomp == NULL) {
-            validateSignature("SEXP(*fstcomp)(SEXP,SEXP,SEXP,SEXP,SEXP)");
+            validateSignature("SEXP(*fstcomp)(SEXP,SEXP,SEXP,SEXP)");
             p_fstcomp = (Ptr_fstcomp)R_GetCCallable("fstcore", "_fstcore_fstcomp");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_fstcomp(Shield<SEXP>(Rcpp::wrap(rawVec)), Shield<SEXP>(Rcpp::wrap(compressor)), Shield<SEXP>(Rcpp::wrap(compression)), Shield<SEXP>(Rcpp::wrap(hash)), Shield<SEXP>(Rcpp::wrap(r_container)));
+            rcpp_result_gen = p_fstcomp(Shield<SEXP>(Rcpp::wrap(rawVec)), Shield<SEXP>(Rcpp::wrap(compressor)), Shield<SEXP>(Rcpp::wrap(compression)), Shield<SEXP>(Rcpp::wrap(hash)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -150,17 +150,17 @@ namespace fstcore {
         return Rcpp::as<SEXP >(rcpp_result_gen);
     }
 
-    inline SEXP fstdecomp(SEXP rawVec, SEXP r_container) {
-        typedef SEXP(*Ptr_fstdecomp)(SEXP,SEXP);
+    inline SEXP fstdecomp(SEXP rawVec) {
+        typedef SEXP(*Ptr_fstdecomp)(SEXP);
         static Ptr_fstdecomp p_fstdecomp = NULL;
         if (p_fstdecomp == NULL) {
-            validateSignature("SEXP(*fstdecomp)(SEXP,SEXP)");
+            validateSignature("SEXP(*fstdecomp)(SEXP)");
             p_fstdecomp = (Ptr_fstdecomp)R_GetCCallable("fstcore", "_fstcore_fstdecomp");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_fstdecomp(Shield<SEXP>(Rcpp::wrap(rawVec)), Shield<SEXP>(Rcpp::wrap(r_container)));
+            rcpp_result_gen = p_fstdecomp(Shield<SEXP>(Rcpp::wrap(rawVec)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
