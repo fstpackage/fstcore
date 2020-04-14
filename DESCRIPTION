@@ -27,5 +27,5 @@ Encoding: UTF-8
 Copyright: This package includes sources from the LZ4 library written
     by Yann Collet, sources of the ZSTD library owned by Facebook, Inc.
     and sources of the fstlib library owned by Mark Klik
-URL: https://fstpackage.github.io
+URL: https://fstpackage.github.io/fstcore
 BugReports: https://github.com/fstpackage/fst/issues

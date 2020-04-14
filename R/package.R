@@ -17,7 +17,7 @@
 #  with the fstcore R package. If not, see <http://www.gnu.org/licenses/>.
 #
 #  You can contact the author at:
-#  - fst R package source repository : https://github.com/fstpackage/fst
+#  - fstcore R package source repository : https://github.com/fstpackage/fstcore
 
 
 #' @useDynLib fstcore, .registration = TRUE
