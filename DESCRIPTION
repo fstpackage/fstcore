@@ -21,11 +21,7 @@ SystemRequirements: little-endian platform
 RoxygenNote: 7.1.0
 Suggests:
     testthat,
-    bit64,
-    data.table,
-    lintr,
-    nanotime,
-    crayon
+    lintr
 License: AGPL-3 | file LICENSE
 Encoding: UTF-8
 Copyright: This package includes sources from the LZ4 library written

@@ -2,7 +2,7 @@
 # Checks before releasing to CRAN
 
 * Build and test package on:
-    - Clang 6.0.0 (on latest Ubuntu)
+    - Clang 10 (on latest Ubuntu)
     - R-hub infrastructure (all available platforms)
     - docker with the rocker/r-devel-ubsan-clang instrumented image
     - docker with the rocker/r-devel-san instrumented image
