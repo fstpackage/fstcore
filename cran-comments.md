@@ -1,10 +1,11 @@
 
 ## Submission
 
-This is the first submission of package 'fstcore' which contains R bindings to the fstlib library and the sources of
-the LZ4 and ZSTD compression libraries. The C++ code in this package is an almost exact duplicate of the C++ code that
-is currently contained in the fst package. The rational for moving the core C++ binding of the fst package into a
-separate package is better maintainability. With this split, the C++ components can be independently updated from fst.
+This is the first submission of package fstcore. This package contains the R bindings to the fstlib library and the
+sources of the LZ4 and ZSTD compression libraries. The C++ code in this package is an almost exact duplicate of the
+C++ code that is contained in v0.9.2 of the fst package. The rational for moving the core C++ binding of the fst
+package into a separate package is better maintainability.  With this split, the C++ components can be updated
+independently from the fst package.
 
 
 ## Test environments 
@@ -18,7 +19,6 @@ separate package is better maintainability. With this split, the C++ components 
 * Windows 10 local R 3.6.4
 * Windows 10 local R-dev 4.0.0 pre-release (r77640)
 * Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 3.6.3)
-* Singularity-container package for running rchk on Ubuntu 18.10
 * Valgrind on Ubuntu 19.10
 * Rhub (all available systems)
 
