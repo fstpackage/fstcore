@@ -1,6 +1,6 @@
 Package: fstcore
 Type: Package
-Title: R bindings to the fstlib library
+Title: R Bindings to the Fstlib Library
 Description: The `fstlib` library provides multithreaded serialization of compressed data frames using the
     'fst' format. The 'fst' format allows for random access of stored data and compression with the LZ4 and ZSTD
     compressors created by Yann Collet. The ZSTD compression library is owned by Facebook Inc.
