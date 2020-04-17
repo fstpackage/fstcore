@@ -17,7 +17,7 @@
 #  with the fstcore R package. If not, see <http://www.gnu.org/licenses/>.
 #
 #  You can contact the author at:
-#  - fst R package source repository : https://github.com/fstpackage/fst
+#  - fstcore R package source repository : https://github.com/fstpackage/fstcore
 
 
 #' @useDynLib fstcore, .registration = TRUE
@@ -48,7 +48,7 @@ NULL
 #'
 #'
 #' **_The following copyright notice, list of conditions and disclaimer apply to
-#' the use of the ZSTD library in the fst package:_**
+#' the use of the ZSTD library in the fstcore package:_**
 #'
 #' BSD License
 #'
@@ -83,7 +83,7 @@ NULL
 #'
 #'
 #' **_The following copyright notice, list of conditions and disclaimer apply to
-#' the use of the LZ4 library in the fst package:_**
+#' the use of the LZ4 library in the fstcore package:_**
 #'
 #' LZ4 Library
 #' Copyright (c) 2011-2016, Yann Collet

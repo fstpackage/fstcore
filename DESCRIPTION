@@ -4,8 +4,8 @@ Title: R bindings to the fstlib library
 Description: The `fstlib` library provides multithreaded serialization of compressed data frames using the
     'fst' format. The 'fst' format allows for random access of stored data and compression with the LZ4 and ZSTD
     compressors created by Yann Collet. The ZSTD compression library is owned by Facebook Inc.
-Version: 0.9.3
-Date: 2020-04-02
+Version: 0.9.4
+Date: 2020-04-17
 Authors@R: c(
     person("Mark", "Klik", email = "markklik@gmail.com", role = c("aut", "cre", "cph")),
     person("Yann", "Collet", role = c("ctb", "cph"),
@@ -21,15 +21,11 @@ SystemRequirements: little-endian platform
 RoxygenNote: 7.1.0
 Suggests:
     testthat,
-    bit64,
-    data.table,
-    lintr,
-    nanotime,
-    crayon
+    lintr
 License: AGPL-3 | file LICENSE
 Encoding: UTF-8
 Copyright: This package includes sources from the LZ4 library written
     by Yann Collet, sources of the ZSTD library owned by Facebook, Inc.
     and sources of the fstlib library owned by Mark Klik
-URL: https://fstpackage.github.io
+URL: https://fstpackage.github.io/fstcore
 BugReports: https://github.com/fstpackage/fst/issues

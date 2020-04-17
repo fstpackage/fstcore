@@ -1,5 +1,5 @@
 
-<img src="fst.png" align="right" height="196" width="196" />
+<img src="fstcore.png" align="right" height="196" width="196" />
 
 [![Linux/OSX Build
 Status](https://travis-ci.org/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.org/fstpackage/fstcore)
@@ -33,9 +33,14 @@ You can also use the development version from GitHub:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fstPackage/fstcore", ref = "develop")
+devtools::install_github("fstpackage/fstcore", ref = "develop")
 ```
 
 ## Basic usage
 
 Please refer to http://www.fstpackage.org/fst to get an introduction to using the `fst` package.
+
+
+## Contact
+
+Questions, ideas and issues can be best reported in the [fst package repository](https://github.com/fstpackage/fst).

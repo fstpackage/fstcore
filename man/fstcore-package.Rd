@@ -22,7 +22,7 @@ Yann Collet and owned by Facebook, Inc.
 }
 
 \strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
-the use of the ZSTD library in the fst package:}}
+the use of the ZSTD library in the fstcore package:}}
 
 BSD License
 
@@ -55,7 +55,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 \strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
-the use of the LZ4 library in the fst package:}}
+the use of the LZ4 library in the fstcore package:}}
 
 LZ4 Library
 Copyright (c) 2011-2016, Yann Collet
