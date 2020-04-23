@@ -1,4 +1,10 @@
 
+## Resubmission
+
+In this resubmission of package fstcore, I've corrected quotes in the Title and Description fields and added some
+executable examples in the documentation. Also, Yuta Mori was added as copyright holder for the libdivsufsort-lite
+code bundled with ZSTD.
+
 ## Submission
 
 This is the first submission of package fstcore. This package contains the R bindings to the fstlib library and the
