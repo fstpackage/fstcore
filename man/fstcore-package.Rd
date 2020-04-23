@@ -11,7 +11,7 @@ It also contains the \code{LZ4} and \code{ZSTD} sources used for compression. \c
 backend to \code{fst}.
 }
 \details{
-The fstcore package is based on three C++ libraries:
+The fstcore package is based on four C++ libraries:
 \itemize{
 \item \strong{fstlib}: library containing code to write, read and compute on files stored in the \emph{fst} format.
 Written and owned by Mark Klik.
@@ -19,6 +19,8 @@ Written and owned by Mark Klik.
 by Yann Collet.
 \item \strong{ZSTD}: library containing code to compress data with the ZSTD compressor. Written by
 Yann Collet and owned by Facebook, Inc.
+\item \strong{libdivsufsort-lite}: a  lightweight suffix array construction algorithm. This code is bundled with
+the ZSTD compression library. Written and owned by Yuta Mori.
 }
 
 \strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
@@ -81,4 +83,51 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
+the use of the fstlib library in the fstcore package:}}
+
+fstlib - A C++ library for ultra fast storage and retrieval of datasets
+
+Copyright (C) 2017-present, Mark AJ Klik
+
+This file is part of fstlib.
+
+fstlib is free software: you can redistribute it and/or modify it under the
+terms of the GNU Affero General Public License version 3 as published by the
+Free Software Foundation.
+
+fstlib is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+You should have received a copy of the GNU Affero General Public License
+along with fstlib. If not, see \url{http://www.gnu.org/licenses/}.
+
+\strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
+the use of the libdivsufsort-lite library in the fstcore package:}}
+
+Copyright (c) 2003-2008 Yuta Mori All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
 }
