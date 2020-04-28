@@ -11,7 +11,7 @@ It also contains the \code{LZ4} and \code{ZSTD} sources used for compression. \c
 backend to \code{fst}.
 }
 \details{
-The fstcore package is based on four C++ libraries:
+The fstcore package is based on six C++ libraries or components:
 \itemize{
 \item \strong{fstlib}: library containing code to write, read and compute on files stored in the \emph{fst} format.
 Written and owned by Mark Klik.
@@ -21,6 +21,10 @@ by Yann Collet.
 Yann Collet and owned by Facebook, Inc.
 \item \strong{libdivsufsort-lite}: a  lightweight suffix array construction algorithm. This code is bundled with
 the ZSTD compression library. Written and owned by Yuta Mori.
+\item \strong{sources from zstdmt}: a multithreading library for Brotli, Lizard, LZ4, LZ5 and Zstandard.  This code is
+bundled with the ZSTD library. Written and owned by Tino Reichardt.
+\item \strong{source file zstd_opt.h}: Price functions for optimal parser. Written and owned by Yann Collet and Przemyslaw
+Skibinski. This code is bundled with the ZSTD library.
 }
 
 \strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
@@ -130,4 +134,35 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+\strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
+the use of sources from the zstdmt library included in the fstcore package
+as part the ZSTD library:}}
+
+Copyright (c) 2016 Tino Reichardt
+All rights reserved.
+
+This source code is licensed under both the BSD-style license (found in the
+LICENSE file in the root directory of this source tree) and the GPLv2 (found
+in the COPYING file in the root directory of this source tree).
+
+You can contact the author at:
+\itemize{
+\item zstdmt source repository: https://github.com/mcmilk/zstdmt
+}
+
+\strong{\emph{The following copyright notice, list of conditions and disclaimer apply to
+the use of zstd_opt.h included in the fstcore package as part the ZSTD library:}}
+
+Copyright (c) 2016-present, Przemyslaw Skibinski, Yann Collet, Facebook, Inc.
+All rights reserved.
+
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of https://github.com/facebook/zstd.
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License version 2 as published by the
+Free Software Foundation. This program is dual-licensed; you may select
+either version 2 of the GNU General Public License ("GPL") or BSD license
+("BSD").
 }
