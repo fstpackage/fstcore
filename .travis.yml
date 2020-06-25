@@ -1,6 +1,6 @@
 language: r
 cache: packages
-dist: xenial
+dist: bionic
 warnings_are_errors: true
 
 r:
@@ -11,7 +11,7 @@ os:
   - linux
   - osx
 
-matrix:
+jobs:
   exclude:
   - r: devel
     os: osx
