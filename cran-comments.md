@@ -1,4 +1,17 @@
 
+## Resubmission
+
+In this resubmission of package fstcore, I've added Przemyslaw Skibinski as contributor and copyright holder of the
+bundled price functions which are part of the ZSTD library and I've added Tino Reichardt as contributor and copyright
+holder of the bundled threading code, also part of the ZSTD library. The obsolete LICENSE file (and it's reference in
+DESCRIPTION) was deleted.
+
+## Resubmission
+
+In this resubmission of package fstcore, I've corrected quotes in the Title and Description fields and added some
+executable examples in the documentation. Also, Yuta Mori was added as copyright holder for the libdivsufsort-lite
+code bundled with ZSTD.
+
 ## Submission
 
 This is the first submission of package fstcore. This package contains the R bindings to the fstlib library and the
