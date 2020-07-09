@@ -389,6 +389,16 @@ RcppExport SEXP _fstcore_restore_after_fork(SEXP restoreSEXP) {
     UNPROTECT(1);
     return rcpp_result_gen;
 }
+// library_versions
+SEXP library_versions();
+RcppExport SEXP _fstcore_library_versions() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(library_versions());
+    return rcpp_result_gen;
+END_RCPP
+}
 
 // validate (ensure exported C++ functions exist before calling them)
 static int _fstcore_RcppExport_validate(const char* sig) { 
@@ -438,6 +448,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_fstcore_setnrofthreads", (DL_FUNC) &_fstcore_setnrofthreads, 1},
     {"_fstcore_hasopenmp", (DL_FUNC) &_fstcore_hasopenmp, 0},
     {"_fstcore_restore_after_fork", (DL_FUNC) &_fstcore_restore_after_fork, 1},
+    {"_fstcore_library_versions", (DL_FUNC) &_fstcore_library_versions, 0},
     {"_fstcore_RcppExport_registerCCallable", (DL_FUNC) &_fstcore_RcppExport_registerCCallable, 0},
     {NULL, NULL, 0}
 };
