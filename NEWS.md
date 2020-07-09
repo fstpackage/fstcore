@@ -1,4 +1,21 @@
 
+# fstcore 0.9.5 (in development)
+
+With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL version 2. This allows for less
+restrictive use of the fstcore package. In particular, closed-source (commercial) solutions can now _use_ fstcore
+(call it's API), as was impossible under AGPL (under AGPL products can only use `fstcore` if they make the source
+code available under AGPL or more restrictive license).
+
+
+## Library updates
+
+* ZSTD has been updated to version 1.4.5
+
+## Enhancements
+
+## Bug Fixes
+
+
 # fstcore 0.9.4
 
 R package fstcore contains the R bindings to the C++ fstlib library needed to interface with _fst_ files as well as
