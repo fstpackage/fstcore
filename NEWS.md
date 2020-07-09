@@ -10,6 +10,7 @@ code available under AGPL or more restrictive license).
 ## Library updates
 
 * ZSTD has been updated to version 1.4.5
+* fstlib has been updated to version 0.1.6
 
 ## Enhancements
 

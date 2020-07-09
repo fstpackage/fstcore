@@ -56,7 +56,7 @@
 #'
 #' # leave in single threaded mode after a fork
 #' threads_fstlib(12, reset_after_fork = FALSE)
-#' 
+#'
 #' # reset number of threads after a fork
 #' threads_fstlib(12, reset_after_fork = TRUE)
 threads_fstlib <- function(nr_of_threads = NULL, reset_after_fork = NULL) {

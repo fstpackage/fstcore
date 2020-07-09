@@ -118,7 +118,7 @@ NULL
 #'
 #' **_The following copyright notice, list of conditions and disclaimer apply to
 #' the use of the fstlib library in the fstcore package:_**
-#' 
+#'
 #' fstlib - A C++ library for ultra fast storage and retrieval of datasets
 #'
 #' Copyright (C) 2017-present, Mark AJ Klik
