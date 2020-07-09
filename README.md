@@ -44,4 +44,4 @@ Please refer to http://www.fstpackage.org/fst to get an introduction to using th
 
 ## Contact
 
-Questions, ideas and issues can be best reported in the [fst package repository](https://github.com/fstpackage/fst).
+Questions, ideas and issues can be reported in the [fst package repository](https://github.com/fstpackage/fst).
