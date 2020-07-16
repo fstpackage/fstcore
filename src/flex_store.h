@@ -19,7 +19,7 @@
 #ifndef FASTSTORE_H
 #define FASTSTORE_H
 
-// [[Rcpp::interfaces(cpp)]]
+// [[Rcpp::interfaces(r, cpp)]]
 
 #include <Rcpp.h>
 
