@@ -3,6 +3,8 @@ cache: packages
 dist: bionic
 warnings_are_errors: false
 
+osx_image: xcode11
+
 r:
   - release
 os:
@@ -13,12 +15,8 @@ jobs:
   - r: devel
     os: osx
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then  rm "/usr/local/bin/gfortran" &&
-    brew install llvm &&
-    export PATH="/usr/local/opt/llvm/bin:$PATH" &&
-    export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib" &&
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"; fi
+brew_packages:
+  - llvm
 
 r_packages:
   - covr
