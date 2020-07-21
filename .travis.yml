@@ -14,7 +14,8 @@ jobs:
     os: osx
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install --force llvm &&
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then  rm "/usr/local/bin/gfortran" &&
+    brew install llvm &&
     export PATH="/usr/local/opt/llvm/bin:$PATH" &&
     export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib" &&
     export CPPFLAGS="-I/usr/local/opt/llvm/include"; fi
