@@ -3,6 +3,11 @@ cache: packages
 dist: bionic
 warnings_are_errors: false
 
+addons:
+  homebrew:
+    packages:
+    - llvm
+
 osx_image: xcode10
 
 r:
@@ -14,12 +19,6 @@ jobs:
   exclude:
   - r: devel
     os: osx
-
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install llvm &&
-    export PATH="/usr/local/opt/llvm/bin:$PATH" &&
-    export LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib" &&
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"; fi
 
 r_packages:
   - covr
