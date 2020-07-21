@@ -3,7 +3,6 @@ cache: packages
 warnings_are_errors: false
 
 dist: bionic
-osx_image: xcode11
 
 r:
   - oldrel
