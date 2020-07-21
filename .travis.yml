@@ -3,12 +3,7 @@ cache: packages
 dist: bionic
 warnings_are_errors: false
 
-addons:
-  homebrew:
-    packages:
-    - llvm
-
-osx_image: xcode10
+osx_image: xcode11
 
 r:
   - release
@@ -19,6 +14,9 @@ jobs:
   exclude:
   - r: devel
     os: osx
+
+brew_packages:
+  - llvm
 
 r_packages:
   - covr
