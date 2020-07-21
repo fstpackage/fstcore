@@ -28,13 +28,13 @@ test_that("zero-row table", {
 
 
 test_that("zero-column table", {
-  
+
   zero_columns <- data.frame()
 
   # store and retrieve
   res <- store_retrieve("data/1.fst", zero_columns, 50L, TRUE)
 
-  # empty named list  
+  # empty named list
   expect_equal(length(res$resTable), 0)
   expect_equal(names(res$resTable), character(0))
 })
