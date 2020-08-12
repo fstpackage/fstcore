@@ -1,26 +1,27 @@
 language: r
 cache: packages
-dist: bionic
 warnings_are_errors: false
+
+dist: bionic
 
 r:
   - oldrel
   - release
   - devel
+  
 os:
   - linux
   - osx
 
-jobs:
+matrix:
   exclude:
   - r: devel
     os: osx
+  - r: oldrel
+    os: osx
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install llvm &&
-    export PATH="/usr/local/opt/llvm/bin:$PATH" &&
-    export LDFLAGS="-L/usr/local/opt/llvm/lib" &&
-    export CPPFLAGS="-I/usr/local/opt/llvm/include"; fi
+brew_packages:
+  - llvm
 
 r_packages:
   - covr
