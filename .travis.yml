@@ -13,6 +13,13 @@ os:
   - linux
   - osx
 
+matrix:
+  exclude:
+  - r: devel
+    os: osx
+  - r: oldrel
+    os: osx
+
 brew_packages:
   - llvm
 
