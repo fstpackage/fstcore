@@ -149,7 +149,7 @@ inline unsigned int ReadHeader(ifstream &myfile, int &keyLength, int &nrOfColsFi
     throw(runtime_error(FSTERROR_ERROR_OPEN_READ));
   }
 
-  unsigned long long* p_headerHash         = reinterpret_cast<unsigned long long*>(tableMeta);
+  uint64_t* p_headerHash                   = reinterpret_cast<uint64_t*>(tableMeta);
   //unsigned int* p_tableVersion           = reinterpret_cast<unsigned int*>(&tableMeta[8]);
   //int* p_tableFlags                      = reinterpret_cast<int*>(&tableMeta[12]);
   //unsigned long long* p_freeBytes1       = reinterpret_cast<unsigned long long*>(&tableMeta[16]);
@@ -160,7 +160,7 @@ inline unsigned int ReadHeader(ifstream &myfile, int &keyLength, int &nrOfColsFi
   //char* p_freeBytes                      = reinterpret_cast<char*>(&tableMeta[44]);
 
   // check header hash
-  const unsigned long long hHash = XXH64(&tableMeta[8], TABLE_META_SIZE - 8, FST_HASH_SEED);  // skip first 8 bytes (hash value itself)
+  const uint64_t hHash = XXH64(&tableMeta[8], TABLE_META_SIZE - 8, FST_HASH_SEED);  // skip first 8 bytes (hash value itself)
 
   if (hHash != *p_headerHash)
   {
@@ -278,7 +278,7 @@ void FstStore::fstWrite(IFstTable &fstTable, const int compress) const
 
   // Column names [leaf to C]  [size: 24 + x]
 
-  offset = offset + chunksetHeaderSize;
+  offset = offset + (uint32_t) chunksetHeaderSize;
   unsigned long long* p_colNamesHash      = reinterpret_cast<unsigned long long*>(&metaDataWriteBlock[offset]);
   unsigned int* p_colNamesVersion         = reinterpret_cast<unsigned int*>(&metaDataWriteBlock[offset + 8]);
   int* p_colNamesFlags                    = reinterpret_cast<int*>(&metaDataWriteBlock[offset + 12]);
@@ -633,7 +633,7 @@ void FstStore::fstMeta(IColumnFactory* columnFactory, IStringColumn* col_names)
 }
 
 
-void FstStore::fstRead(IFstTable &tableReader, IStringArray* columnSelection, const long long startRow, const long long endRow,
+void FstStore::fstRead(IFstTable &tableReader, IStringArray* columnSelection, const int64_t startRow, const int64_t endRow,
   IColumnFactory* columnFactory, vector<int> &keyIndex, IStringArray* selectedCols, IStringColumn* col_names)
 {
   // fst file stream using a stack buffer
