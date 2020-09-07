@@ -18,6 +18,8 @@ test_that("long table", {
 
   skip_on_cran()  # this test requires > 4 GB RAM
 
+  skip_if(.Machine$sizeof.pointer != 8)
+
   # manually create a data frame
   df <- structure(
     list(
