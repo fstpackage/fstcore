@@ -27,7 +27,7 @@ r_packages:
   - covr
   - lintr
   - bit64
-  - stringr
+  - stringi
   - nanotime
   - testthat
   - data.table
