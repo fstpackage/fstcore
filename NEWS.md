@@ -13,6 +13,9 @@ code available under AGPL or more restrictive license).
 
 ## Enhancements
 
+* Numeric values can now be used to select a row range, including values larger than 2^31 to select a subset from
+long vector columns (thanks @dipterix for reporting)
+
 ## Bug Fixes
 
 
