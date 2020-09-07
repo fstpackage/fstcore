@@ -43,8 +43,8 @@ class FstTable : public IFstTable
   SEXP r_container;
 
   // Table metadata
-  unsigned int nrOfCols;
-  unsigned long long nrOfRows;
+  uint32_t nrOfCols;
+  uint64_t nrOfRows;
   int uniformEncoding;
 
 
@@ -63,7 +63,7 @@ class FstTable : public IFstTable
 
     SEXP ResTable() { return VECTOR_ELT(r_container, 0); }
 
-    void InitTable(unsigned int nrOfCols, unsigned long long nrOfRows);
+    void InitTable(uint32_t nrOfCols, uint64_t nrOfRows);
 
     void SetStringColumn(IStringColumn* stringColumn, int colNr);
 
@@ -85,40 +85,40 @@ class FstTable : public IFstTable
 
     void SetColNames();
 
-    void SetKeyColumns(int* keyColPos, unsigned int nrOfKeys);
+    void SetKeyColumns(int* keyColPos, uint32_t nrOfKeys);
 
-    FstColumnType ColumnType(unsigned int colNr, FstColumnAttribute &columnAttribute, short int &scale,
+    FstColumnType ColumnType(uint32_t colNr, FstColumnAttribute &columnAttribute, short int &scale,
       std::string &annotation, bool &hasAnnotation);
 
-    IStringWriter* GetStringWriter(unsigned int colNr);
+    IStringWriter* GetStringWriter(uint32_t colNr);
 
-    int* GetLogicalWriter(unsigned int colNr);
+    int* GetLogicalWriter(uint32_t colNr);
 
-    int* GetIntWriter(unsigned int colNr);
+    int* GetIntWriter(uint32_t colNr);
 
-    char* GetByteWriter(unsigned int colNr);
+    char* GetByteWriter(uint32_t colNr);
 
-    long long* GetInt64Writer(unsigned int colNr);
+    long long* GetInt64Writer(uint32_t colNr);
 
-    double* GetDoubleWriter(unsigned int colNr);
+    double* GetDoubleWriter(uint32_t colNr);
 
-    IByteBlockColumn* GetByteBlockWriter(unsigned int col_nr);
+    IByteBlockColumn* GetByteBlockWriter(uint32_t col_nr);
 
-    IStringWriter* GetLevelWriter(unsigned int colNr);
+    IStringWriter* GetLevelWriter(uint32_t colNr);
 
     IStringWriter* GetColNameWriter();
 
     void GetKeyColumns(int* keyColPos);
 
-    unsigned int NrOfKeys();
+    uint32_t NrOfKeys();
 
-    unsigned int NrOfColumns();
+    uint32_t NrOfColumns();
 
     void SetColNames(IStringArray* col_names);
 
     SEXP GetColNames();
 
-    unsigned long long NrOfRows();
+    uint64_t NrOfRows();
 };
 
 
