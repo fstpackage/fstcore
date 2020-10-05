@@ -20,7 +20,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fstlib_version() {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fstlib_version_try());
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -57,7 +56,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fststore(SEXP fileNameSEXP, SEXP tableSEXP, SEXP compressionSEXP, SEXP uniformEncodingSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fststore_try(fileNameSEXP, tableSEXP, compressionSEXP, uniformEncodingSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -91,7 +89,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fstmetadata(SEXP fileNameSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fstmetadata_try(fileNameSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -128,7 +125,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fstretrieve(SEXP fileNameSEXP, SEXP columnSelectionSEXP, SEXP startRowSEXP, SEXP endRowSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fstretrieve_try(fileNameSEXP, columnSelectionSEXP, startRowSEXP, endRowSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -164,7 +160,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fsthasher(SEXP rawVecSEXP, SEXP seedSEXP, SEXP blockHashSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fsthasher_try(rawVecSEXP, seedSEXP, blockHashSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -201,7 +196,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fstcomp(SEXP rawVecSEXP, SEXP compressorSEXP, SEXP compressionSEXP, SEXP hashSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fstcomp_try(rawVecSEXP, compressorSEXP, compressionSEXP, hashSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -235,7 +229,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_fstdecomp(SEXP rawVecSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_fstdecomp_try(rawVecSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -268,7 +261,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_getnrofthreads() {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_getnrofthreads_try());
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -302,7 +294,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_setnrofthreads(SEXP nrOfThreadsSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_setnrofthreads_try(nrOfThreadsSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -335,7 +326,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_hasopenmp() {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_hasopenmp_try());
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
@@ -368,7 +358,6 @@ END_RCPP_RETURN_ERROR
 RcppExport SEXP _fstcore_restore_after_fork(SEXP restoreSEXP) {
     SEXP rcpp_result_gen;
     {
-        Rcpp::RNGScope rcpp_rngScope_gen;
         rcpp_result_gen = PROTECT(_fstcore_restore_after_fork_try(restoreSEXP));
     }
     Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");

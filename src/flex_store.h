@@ -24,19 +24,19 @@
 #include <Rcpp.h>
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 int fstlib_version();
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fststore(Rcpp::String fileName, SEXP table, SEXP compression, SEXP uniformEncoding);
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fstmetadata(Rcpp::String fileName);
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fstretrieve(Rcpp::String fileName, SEXP columnSelection, SEXP startRow, SEXP endRow);
 
 
