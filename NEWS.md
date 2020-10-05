@@ -15,6 +15,7 @@ code available under AGPL or more restrictive license).
 
 * Numeric values can now be used to select a row range, including values larger than 2^31 to select a subset from
 long vector columns (thanks @dipterix for reporting)
+* The random seed is not initilized anymore when `fstcore` is loaded (see fst#251, thanks @mlell for investigating and @riccardoporreca for providing the solution)
 
 ## Bug Fixes
 
