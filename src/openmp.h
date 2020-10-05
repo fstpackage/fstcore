@@ -40,6 +40,10 @@ SEXP hasopenmp();
 void restore_after_fork(bool restore);
 
 
+// [[Rcpp::export(rng = false)]]
+bool is_forked();
+
+
 // [[Rcpp::init]]
 int avoid_openmp_hang_within_fork(DllInfo *dll);
 

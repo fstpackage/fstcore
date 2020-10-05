@@ -378,6 +378,38 @@ RcppExport SEXP _fstcore_restore_after_fork(SEXP restoreSEXP) {
     UNPROTECT(1);
     return rcpp_result_gen;
 }
+// is_forked
+bool is_forked();
+static SEXP _fstcore_is_forked_try() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    rcpp_result_gen = Rcpp::wrap(is_forked());
+    return rcpp_result_gen;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP _fstcore_is_forked() {
+    SEXP rcpp_result_gen;
+    {
+        rcpp_result_gen = PROTECT(_fstcore_is_forked_try());
+    }
+    Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
+    if (rcpp_isInterrupt_gen) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
+    }
+    Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
+    if (rcpp_isError_gen) {
+        SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
+        UNPROTECT(1);
+        Rf_error(CHAR(rcpp_msgSEXP_gen));
+    }
+    UNPROTECT(1);
+    return rcpp_result_gen;
+}
 // library_versions
 SEXP library_versions();
 RcppExport SEXP _fstcore_library_versions() {
@@ -404,6 +436,7 @@ static int _fstcore_RcppExport_validate(const char* sig) {
         signatures.insert("int(*setnrofthreads)(SEXP)");
         signatures.insert("SEXP(*hasopenmp)()");
         signatures.insert("void(*restore_after_fork)(bool)");
+        signatures.insert("bool(*is_forked)()");
     }
     return signatures.find(sig) != signatures.end();
 }
@@ -421,6 +454,7 @@ RcppExport SEXP _fstcore_RcppExport_registerCCallable() {
     R_RegisterCCallable("fstcore", "_fstcore_setnrofthreads", (DL_FUNC)_fstcore_setnrofthreads_try);
     R_RegisterCCallable("fstcore", "_fstcore_hasopenmp", (DL_FUNC)_fstcore_hasopenmp_try);
     R_RegisterCCallable("fstcore", "_fstcore_restore_after_fork", (DL_FUNC)_fstcore_restore_after_fork_try);
+    R_RegisterCCallable("fstcore", "_fstcore_is_forked", (DL_FUNC)_fstcore_is_forked_try);
     R_RegisterCCallable("fstcore", "_fstcore_RcppExport_validate", (DL_FUNC)_fstcore_RcppExport_validate);
     return R_NilValue;
 }
@@ -437,6 +471,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_fstcore_setnrofthreads", (DL_FUNC) &_fstcore_setnrofthreads, 1},
     {"_fstcore_hasopenmp", (DL_FUNC) &_fstcore_hasopenmp, 0},
     {"_fstcore_restore_after_fork", (DL_FUNC) &_fstcore_restore_after_fork, 1},
+    {"_fstcore_is_forked", (DL_FUNC) &_fstcore_is_forked, 0},
     {"_fstcore_library_versions", (DL_FUNC) &_fstcore_library_versions, 0},
     {"_fstcore_RcppExport_registerCCallable", (DL_FUNC) &_fstcore_RcppExport_registerCCallable, 0},
     {NULL, NULL, 0}

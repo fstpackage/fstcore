@@ -243,6 +243,26 @@ namespace fstcore {
             throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
     }
 
+    inline bool is_forked() {
+        typedef SEXP(*Ptr_is_forked)();
+        static Ptr_is_forked p_is_forked = NULL;
+        if (p_is_forked == NULL) {
+            validateSignature("bool(*is_forked)()");
+            p_is_forked = (Ptr_is_forked)R_GetCCallable("fstcore", "_fstcore_is_forked");
+        }
+        RObject rcpp_result_gen;
+        {
+            rcpp_result_gen = p_is_forked();
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<bool >(rcpp_result_gen);
+    }
+
 }
 
 #endif // RCPP_fstcore_RCPPEXPORTS_H_GEN_
