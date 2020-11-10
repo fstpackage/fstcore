@@ -7,7 +7,7 @@
   [![downloads](http://cranlogs.r-pkg.org/badges/fstcore)](http://cran.rstudio.com/web/packages/fstcore/index.html)
   [![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore)](http://cran.rstudio.com/web/packages/fstcore/index.html)
 
-  [![Linux/OSX Build Status](https://travis-ci.org/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.org/fstpackage/fstcore)
+  [![Linux/OSX Build Status](https://travis-ci.com/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.com/fstpackage/fstcore)
   [![Windows Build](https://ci.appveyor.com/api/projects/status/alg12npmm08564v6?svg=true)](https://ci.appveyor.com/project/fstpackage/fstcore)
   [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://codecov.io/gh/fstpackage/fstcore)
   [![R build status](https://github.com/MarcusKlik/fstcore/workflows/R-CMD-check/badge.svg)](https://github.com/MarcusKlik/fstcore/actions)
