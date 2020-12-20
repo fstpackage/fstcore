@@ -24,6 +24,9 @@ With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL ve
 
 There are no errors or warnings.
 
-## Downstream dependencies
+## revdepcheck results
 
-There are currently no downstream dependencies.
+We checked 1 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages
