@@ -2,9 +2,9 @@
 # fstcore 0.9.6
 
 With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL version 2. This allows for less
-restrictive use of the fstcore package. In particular, closed-source (commercial) solutions can now _use_ fstcore
-(call it's API), as was impossible under AGPL (under AGPL products can only use `fstcore` if they make the source
-code available under AGPL or more restrictive license).
+restrictive use of the fstcore package. In particular, closed-source (commercial) solutions can now use fstcore
+(call it's API), as was impossible under AGPL (under AGPL, products can only use `fstcore` if they make the products
+source code available under AGPL or more restrictive license).
 
 ## Library updates
 
