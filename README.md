@@ -3,9 +3,9 @@
 
 <!-- badges: start -->
   [![CRAN status](https://cranchecks.info/badges/flavor/release/fstcore/)](https://cran.r-project.org/web/checks/check_results_fstcore.html)
-  [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/fstcore/)](https://cran.r-project.org/package=fstcore)
-  [![downloads](https://cranlogs.r-pkg.org/badges/fstcore/)](https://cran.rstudio.com/web/packages/fstcore/index.html)
-  [![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore/)](https://cran.rstudio.com/web/packages/fstcore/index.html)
+  [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/fstcore)](https://cran.r-project.org/package=fstcore)
+  [![downloads](https://cranlogs.r-pkg.org/badges/fstcore)](https://cran.rstudio.com/web/packages/fstcore/index.html)
+  [![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore)](https://cran.rstudio.com/web/packages/fstcore/index.html)
 
   [![Linux/OSX Build Status](https://travis-ci.com/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.com/fstpackage/fstcore/)
   [![Windows Build](https://ci.appveyor.com/api/projects/status/alg12npmm08564v6?svg=true)](https://ci.appveyor.com/project/fstpackage/fstcore/)
