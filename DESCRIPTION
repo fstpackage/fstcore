@@ -47,5 +47,5 @@ Encoding: UTF-8
 Copyright: This package includes sources from the LZ4 library owned by Yann Collet, sources of the ZSTD
     library owned by Facebook, Inc., sources of the libdivsufsort-lite library owned by Yuta Mori and
     sources of the fstlib library owned by Mark Klik
-URL: https://www.fstpackage.org/fstcore
+URL: https://www.fstpackage.org/fstcore/
 BugReports: https://github.com/fstpackage/fst/issues
