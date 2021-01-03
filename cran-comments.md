@@ -14,9 +14,9 @@ With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL ve
 * Ubuntu 19.10 locally using clang-6
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
-* Windows 10 local R 3.6.4
-* Windows 10 local R-dev 4.0.0 pre-release (r77640)
-* Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 3.6.3)
+* Windows 10 local R 4.0.3
+* Windows 10 local R-dev 4.1.0 pre-release (r79767)
+* Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 4.0.3)
 * Valgrind on Ubuntu 19.10
 * Rhub (all available systems)
 
