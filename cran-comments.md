@@ -1,4 +1,8 @@
 
+## Resubmission
+
+This resubmission makes sure the docs folder is ignored in the package build.
+
 ## Submission
 
 With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL version 2.
