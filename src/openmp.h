@@ -24,20 +24,24 @@
 #include <Rcpp.h>
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP getnrofthreads();
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 int setnrofthreads(SEXP nrOfThreads);
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP hasopenmp();
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 void restore_after_fork(bool restore);
+
+
+// [[Rcpp::export(rng = false)]]
+bool is_forked();
 
 
 // [[Rcpp::init]]

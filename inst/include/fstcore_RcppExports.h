@@ -33,7 +33,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fstlib_version();
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -54,7 +53,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fststore(Shield<SEXP>(Rcpp::wrap(fileName)), Shield<SEXP>(Rcpp::wrap(table)), Shield<SEXP>(Rcpp::wrap(compression)), Shield<SEXP>(Rcpp::wrap(uniformEncoding)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -75,7 +73,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fstmetadata(Shield<SEXP>(Rcpp::wrap(fileName)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -96,7 +93,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fstretrieve(Shield<SEXP>(Rcpp::wrap(fileName)), Shield<SEXP>(Rcpp::wrap(columnSelection)), Shield<SEXP>(Rcpp::wrap(startRow)), Shield<SEXP>(Rcpp::wrap(endRow)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -117,7 +113,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fsthasher(Shield<SEXP>(Rcpp::wrap(rawVec)), Shield<SEXP>(Rcpp::wrap(seed)), Shield<SEXP>(Rcpp::wrap(blockHash)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -138,7 +133,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fstcomp(Shield<SEXP>(Rcpp::wrap(rawVec)), Shield<SEXP>(Rcpp::wrap(compressor)), Shield<SEXP>(Rcpp::wrap(compression)), Shield<SEXP>(Rcpp::wrap(hash)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -159,7 +153,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_fstdecomp(Shield<SEXP>(Rcpp::wrap(rawVec)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -180,7 +173,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_getnrofthreads();
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -201,7 +193,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_setnrofthreads(Shield<SEXP>(Rcpp::wrap(nrOfThreads)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -222,7 +213,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_hasopenmp();
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -243,7 +233,6 @@ namespace fstcore {
         }
         RObject rcpp_result_gen;
         {
-            RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_restore_after_fork(Shield<SEXP>(Rcpp::wrap(restore)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
@@ -252,6 +241,26 @@ namespace fstcore {
             throw Rcpp::LongjumpException(rcpp_result_gen);
         if (rcpp_result_gen.inherits("try-error"))
             throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+    }
+
+    inline bool is_forked() {
+        typedef SEXP(*Ptr_is_forked)();
+        static Ptr_is_forked p_is_forked = NULL;
+        if (p_is_forked == NULL) {
+            validateSignature("bool(*is_forked)()");
+            p_is_forked = (Ptr_is_forked)R_GetCCallable("fstcore", "_fstcore_is_forked");
+        }
+        RObject rcpp_result_gen;
+        {
+            rcpp_result_gen = p_is_forked();
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<bool >(rcpp_result_gen);
     }
 
 }

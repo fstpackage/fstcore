@@ -25,8 +25,9 @@
 #endif
 
 
-static int FstThreadsAtFork = 1;
-static bool RestoreAfterFork = true;
+static int fst_threads_at_fork = 1;
+static bool restore_threads_after_fork = true;
+static bool forked = false;
 
 
 SEXP getnrofthreads()
@@ -51,7 +52,7 @@ int setnrofthreads(SEXP nrOfThreads)
 
 void restore_after_fork(bool restore)
 {
-  RestoreAfterFork = restore;
+  restore_threads_after_fork = restore;
 }
 
 // Folowing code was adopted from package data.table:
@@ -60,7 +61,8 @@ void restore_after_fork(bool restore)
 void when_fork()
 {
   // use call to fstlib that does not call any OpenMP library functions internally
-  FstThreadsAtFork = GetThreads();
+  fst_threads_at_fork = GetThreads();
+  forked = true;
 
   SetThreads(1);
 }
@@ -69,10 +71,18 @@ void when_fork()
 void when_unfork()
 {
   // use call to fstlib that does not call any OpenMP library functions internally
-  if (RestoreAfterFork)
+  if (restore_threads_after_fork)
   {
-    SetThreads(FstThreadsAtFork);
+    SetThreads(fst_threads_at_fork);
   }
+  
+  forked = false;
+}
+
+
+bool is_forked()
+{
+  return forked;
 }
 
 

@@ -223,14 +223,28 @@ SEXP fstretrieve(String fileName, SEXP columnSelection, SEXP startRow, SEXP endR
   std::unique_ptr<IColumnFactory> columnFactory(new ColumnFactory());
   FstStore fstStore(fileName.get_cstring());
 
-  int sRow = *INTEGER(startRow);
+  int64_t sRow = 0;
+
+  if (Rf_isInteger(startRow)) {
+    sRow = (int64_t)(*INTEGER(startRow));
+  } else if (Rf_isReal(startRow)) {
+    sRow = (int64_t)(0.5 + *REAL(startRow));
+  } else {
+    return fst_error("Parameter 'from' should be a positive numeric value");
+  }
 
   // Set to last row
-  int eRow = -1;
+  int64_t eRow = -1;
 
   if (!Rf_isNull(endRow))
   {
-    eRow = *INTEGER(endRow);
+    if (Rf_isInteger(endRow)) {
+    eRow = (int64_t)(*INTEGER(endRow));
+    } else if (Rf_isReal(endRow)) {
+      eRow = (int64_t)(round(*REAL(endRow)));
+    } else {
+      return fst_error("Parameter 'to' should be a positive numeric value or NULL");
+    }
   }
 
   vector<int> keyIndex;

@@ -1,25 +1,14 @@
 
 ## Resubmission
 
-In this resubmission of package fstcore, I've added Przemyslaw Skibinski as contributor and copyright holder of the
-bundled price functions which are part of the ZSTD library and I've added Tino Reichardt as contributor and copyright
-holder of the bundled threading code, also part of the ZSTD library. The obsolete LICENSE file (and it's reference in
-DESCRIPTION) was deleted.
-
-## Resubmission
-
-In this resubmission of package fstcore, I've corrected quotes in the Title and Description fields and added some
-executable examples in the documentation. Also, Yuta Mori was added as copyright holder for the libdivsufsort-lite
-code bundled with ZSTD.
+This resubmission makes sure the docs folder is ignored in the package build.
 
 ## Submission
 
-This is the first submission of package fstcore. This package contains the R bindings to the fstlib library and the
-sources of the LZ4 and ZSTD compression libraries. The C++ code in this package is an almost exact duplicate of the
-C++ code that is contained in v0.9.2 of the fst package. The rational for moving the core C++ binding of the fst
-package into a separate package is better maintainability.  With this split, the C++ components can be updated
-independently from the fst package.
+With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL version 2.
 
+* ZSTD has been updated to version 1.4.5
+* fstlib has been updated to version 0.1.6
 
 ## Test environments 
 
@@ -29,9 +18,9 @@ independently from the fst package.
 * Ubuntu 19.10 locally using clang-6
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
-* Windows 10 local R 3.6.4
-* Windows 10 local R-dev 4.0.0 pre-release (r77640)
-* Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 3.6.3)
+* Windows 10 local R 4.0.3
+* Windows 10 local R-dev 4.1.0 pre-release (r79767)
+* Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 4.0.3)
 * Valgrind on Ubuntu 19.10
 * Rhub (all available systems)
 
@@ -39,6 +28,9 @@ independently from the fst package.
 
 There are no errors or warnings.
 
-## Downstream dependencies
+## revdepcheck results
 
-There are currently no downstream dependencies.
+We checked 1 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 0 packages

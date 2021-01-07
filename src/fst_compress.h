@@ -24,15 +24,15 @@
 #include <Rcpp.h>
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fsthasher(SEXP rawVec, SEXP seed, SEXP blockHash);
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash);
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(rng = false)]]
 SEXP fstdecomp(SEXP rawVec);
 
 

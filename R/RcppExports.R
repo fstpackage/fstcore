@@ -33,6 +33,10 @@ restore_after_fork <- function(restore) {
     invisible(.Call(`_fstcore_restore_after_fork`, restore))
 }
 
+is_forked <- function() {
+    .Call(`_fstcore_is_forked`)
+}
+
 library_versions <- function() {
     .Call(`_fstcore_library_versions`)
 }
