@@ -60,6 +60,11 @@ jobs:
           sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
 
+      - name: Show environmental variables
+        if: always()
+        run: env
+        shell: bash
+
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_: false
