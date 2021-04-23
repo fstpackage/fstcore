@@ -60,9 +60,12 @@ jobs:
           sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
 
-      - name: Show environmental variables
+      - name: Environmental variables and compiler settings
         if: always()
-        run: env
+        run:
+          env
+          clang --version
+          clang++ --version
         shell: bash
 
       - name: Check
