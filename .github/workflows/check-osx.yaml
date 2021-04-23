@@ -64,8 +64,8 @@ jobs:
         if: always()
         run: |
           env
-          clang --version
           clang++ --version
+          export CC=/usr/bin/clang++
         shell: bash
 
       - name: Check
