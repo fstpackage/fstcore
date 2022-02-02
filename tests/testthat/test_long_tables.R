@@ -16,7 +16,9 @@ dir.create("data")
 
 test_that("long table", {
 
-  skip_on_cran()  # this test requires > 4 GB RAM
+  skip_on_cran() # this test requires > 4 GB RAM
+
+  skip_on_ci() # this test requires > 4 GB RAM
 
   skip_if(.Machine$sizeof.pointer != 8)
 
