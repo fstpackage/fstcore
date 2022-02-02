@@ -63,9 +63,9 @@ jobs:
       - name: Environmental variables and compiler settings
         if: always()
         run: |
-          env
           clang++ --version
           export CC=/usr/bin/clang++
+          env
         shell: bash
 
       - name: Check
