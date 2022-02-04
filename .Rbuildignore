@@ -12,3 +12,4 @@
 ^revdep$
 ^docs$
 ^CRAN-RELEASE$
+^CRAN-SUBMISSION$
