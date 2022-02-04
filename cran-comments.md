@@ -16,7 +16,8 @@ In addition, the ZSTD library has been updated to version 1.5.2 and the LZ4 libr
 * Ubuntu 18.04 locally using clang-10.0
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
-* Windows 10 local R 3.6.3
+* Windows 11 local R 3.6.3
+* Windows 11 local R 4.1.2
 * Singularity-container package for running rchk on Ubuntu 18.04
 * Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
