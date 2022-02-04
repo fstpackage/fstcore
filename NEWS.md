@@ -1,5 +1,5 @@
 
-# fstcore 0.9.8
+# fstcore 0.9.8 (2022-02-04)
 
 This release addresses linking problems occurring on ARM OSX systems due to incorrect configuration of Makevars.
 With thanks to Prof. Ripley for identifying the problem and offering pointers for the solution.
@@ -8,12 +8,6 @@ With thanks to Prof. Ripley for identifying the problem and offering pointers fo
 
 * `ZSTD` has been updated to version 1.5.2
 * `LZ4` has been updated to version 1.9.3
-
-
-# fstcore 0.9.6 (2021-01-05)
-
-This submission of fst (v0.9.8) addresses linking problems occurring on ARM OSX systems, originating from
-minor differences between the xxHash implementations in the LZ4 and ZSTD libraries.
 
 
 # fstcore 0.9.6 (2021-01-05)
