@@ -1,27 +1,24 @@
 
-## Resubmission
-
-This resubmission makes sure the docs folder is ignored in the package build.
-
 ## Submission
 
-With version 0.9.6, the license of fstcore changes from AGPL version 3 to MPL version 2.
+This submission of fstcore (v0.9.8) addresses linking problems occurring on ARM OSX systems due to incorrect
+configuration of Makevars as pointed out by Prof. Ripley.
 
-* ZSTD has been updated to version 1.4.5
-* fstlib has been updated to version 0.1.6
+In addition, the ZSTD library has been updated to version 1.5.2 and the LZ4 library has been updated to version 1.9.3.
 
 ## Test environments 
 
-* OSX on travis-ci (version 10.13.6)
-* Ubuntu Ubuntu 16.04.6 LTS on travis-ci
-* Ubuntu 19.10 locally
-* Ubuntu 19.10 locally using clang-6
+* macOS 11.6.2 20G314 using R 4.1.2 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R version 4.0.5 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R 4.1.2 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R dev (2022-01-30 r81596) on github build infrastructure
+* Microsoft Windows Server 2019 10.0.17763 Datacenter using R 4.1.2 on github build infrastructure
+* Ubuntu 18.04 locally using clang-10.0
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
-* Windows 10 local R 4.0.3
-* Windows 10 local R-dev 4.1.0 pre-release (r79767)
-* Windows Server 2012 R2 x64 (build 9600) on AppVeyor (R 4.0.3)
-* Valgrind on Ubuntu 19.10
+* Windows 10 local R 3.6.3
+* Singularity-container package for running rchk on Ubuntu 18.04
+* Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
 
 ## R CMD check results
