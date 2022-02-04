@@ -1,5 +1,10 @@
 
-## Resubmission
+## Resubmission 2
+
+This resubmission of fstcore (v0.9.8) addresses a note found on CRAN pretests where the URL for codecov.io was moved
+to app.codecov.io.
+
+## Resubmission 1
 
 This resubmission of fstcore (v0.9.8) addresses a note found on CRAN pretests where a trailing forward slash is considered a possibly invalid URL. It also fixes a warning on the ZSTD library due to an example folder which was included unintentionally.
 
