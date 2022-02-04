@@ -1,11 +1,13 @@
 
-# fstcore 0.9.7 (in development)
+# fstcore 0.9.8 (2022-02-04)
+
+This release addresses linking problems occurring on ARM OSX systems due to incorrect configuration of Makevars.
+With thanks to Prof. Ripley for identifying the problem and offering pointers for the solution.
 
 ## Library updates
 
-## Enhancements
-
-## Bugs
+* `ZSTD` has been updated to version 1.5.2
+* `LZ4` has been updated to version 1.9.3
 
 
 # fstcore 0.9.6 (2021-01-05)
@@ -29,6 +31,6 @@ long vector columns (thanks @dipterix for reporting)
 
 # fstcore 0.9.4 (2020-05-04)
 
-R package`fstcore`contains the R bindings to the C++ fstlib library needed to interface with _fst_ files as well as
+R package `fstcore`contains the R bindings to the C++ fstlib library needed to interface with _fst_ files as well as
 the LZ4 and ZSTD sources. It was developed as a package separate from the fst package to facilitate independent
 updates to the fstlib, LZ4 and ZSTD libraries.
