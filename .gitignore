@@ -21,3 +21,5 @@
 /docs/*
 /src-i386/
 /src-x64/
+/src/fstlib/ZSTD/dll/*
+/src/fstlib/ZSTD/legacy/*

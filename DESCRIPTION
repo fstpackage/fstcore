@@ -31,14 +31,13 @@ Authors@R:
       person(given = "Facebook, Inc.",
             role = "cph",
             comment = "Bundled 'ZSTD' code"))
-LazyData: true
 Depends:
     R (>= 3.0.0)
 Imports:
     Rcpp
 LinkingTo: Rcpp
 SystemRequirements: little-endian platform
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests:
     testthat,
     lintr
