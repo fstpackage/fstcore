@@ -12,17 +12,14 @@ test_that("Package Style", {
   # lintr throws a lot of valgrind warnings, so skip on CRAN for now
   skip_on_cran()
 
-  # lintr has many new and updated lints from version 2 onwards
-  major_lintr_version <- strsplit(as.character(packageVersion("lintr")), ".", fixed = TRUE)[[1]]
+  skip_on_ci()
 
-  if (as.integer(major_lintr_version[1]) >= 2) {
-    lints <- with_defaults(
-      line_length_linter = line_length_linter(120),
-      cyclocomp_linter = cyclocomp_linter(37))
-  } else {
-    lints <- with_defaults(
-      line_length_linter = line_length_linter(120))
-  }
+  skip_if_not_installed("lintr", "2.0.0")
+
+  lints <- with_defaults(
+    line_length_linter = line_length_linter(120),
+    cyclocomp_linter = cyclocomp_linter(37)
+  )
 
   lints <- lints[!(names(lints) %in%
     c("object_usage_linter", "camel_case_linter", "commas_linter", "multiple_dots_linter"))]

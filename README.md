@@ -7,10 +7,8 @@
   [![downloads](https://cranlogs.r-pkg.org/badges/fstcore)](https://cran.r-project.org/package=fstcore)
   [![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore)](https://cran.r-project.org/package=fstcore)
 
-  [![Linux/OSX Build Status](https://travis-ci.com/fstpackage/fstcore.svg?branch=develop)](https://travis-ci.com/fstpackage/fstcore/)
-  [![Windows Build](https://ci.appveyor.com/api/projects/status/alg12npmm08564v6?svg=true)](https://ci.appveyor.com/project/fstpackage/fstcore/)
-  [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://codecov.io/gh/fstpackage/fstcore/)
-  [![R build status](https://github.com/MarcusKlik/fstcore/workflows/R-CMD-check/badge.svg)](https://github.com/MarcusKlik/fstcore/actions/)
+  [![Build Status](https://github.com/fstpackage/fstcore/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop)](https://github.com/fstpackage/fstcore/actions/workflows/R-CMD-check.yaml)
+  [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/fstpackage/fstcore)
 <!-- badges: end -->
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0/)
