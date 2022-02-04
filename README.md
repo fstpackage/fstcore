@@ -8,7 +8,7 @@
   [![total\_downloads](https://cranlogs.r-pkg.org/badges/grand-total/fstcore)](https://cran.r-project.org/package=fstcore)
 
   [![Build Status](https://github.com/fstpackage/fstcore/actions/workflows/R-CMD-check.yaml/badge.svg?branch=develop)](https://github.com/fstpackage/fstcore/actions/workflows/R-CMD-check.yaml)
-  [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://codecov.io/gh/fstpackage/fstcore)
+  [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/fstpackage/fstcore)
 <!-- badges: end -->
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0/)
