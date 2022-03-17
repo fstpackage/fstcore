@@ -11,7 +11,8 @@ LIBFRAME = fstlib/interface/openmphelper.o fstlib/interface/fststore.o fstlib/lo
 	fstlib/integer/integer_v8.o fstlib/byte/byte_v12.o fstlib/double/double_v9.o fstlib/character/character_v6.o \
 	fstlib/factor/factor_v7.o fstlib/blockstreamer/blockstreamer_v2.o fstlib/integer64/integer64_v11.o \
     fstlib/byteblock/byteblock_v13.o
-$(SHLIB): libLZ4.a libZSTD.a libCOMPRESSION.a libFRAME.a
+
+$(SHLIB): libCOMPRESSION.a libFRAME.a
 
 libCOMPRESSION.a: $(LIBCOMPRESSION)
 	$(AR) rcs libCOMPRESSION.a $(LIBCOMPRESSION)
