@@ -4,11 +4,12 @@
 # NOTE: This workflow is overkill for most R packages and
 # check-standard.yaml is likely a better choice.
 # usethis::use_github_action("check-standard") will install it.
+
+name: R-CMD-check
+
 on:
   push:
   pull_request:
-
-name: R-CMD-check
 
 jobs:
   R-CMD-check:
@@ -24,9 +25,9 @@ jobs:
           - {os: windows-2022,   r: 'devel'}
           - {os: windows-latest, r: '4.1'}
           - {os: windows-latest, r: '3.6'}
-          - {os: ubuntu-20.04,    r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-20.04,   r: 'release'}
-          - {os: ubuntu-18.04,   r: 'oldrel-4'}
+          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', installer: 'sudo apt-get -y liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-20.04,   r: 'release', installer: 'sudo apt-get -y liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-18.04,   r: 'oldrel-4', installer: 'sudo apt-get -y liblz4-dev libzstd-dev libxxhash-dev'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -34,6 +35,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - run: ${{ matrix.config.installer }}
 
       - uses: r-lib/actions/setup-pandoc@v2
 
