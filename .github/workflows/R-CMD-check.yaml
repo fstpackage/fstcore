@@ -15,7 +15,7 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.config.id }})
 
     strategy:
       fail-fast: false
@@ -26,6 +26,7 @@ jobs:
           - {os: windows-latest, r: '4.1'}
           - {os: windows-latest, r: '3.6'}
           - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', bundled: true, id: bundled}
           - {os: ubuntu-20.04,   r: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
           - {os: ubuntu-18.04,   r: 'oldrel-4', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
 
@@ -36,6 +37,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - env:
+            BUILD_INTERNAL_LIBS: ${{ matrix.config.bundled }}
+ 
       - run: ${{ matrix.config.installer }}
 
       - uses: r-lib/actions/setup-pandoc@v2
