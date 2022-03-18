@@ -21,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release',  id: 'bundled-libs'}
+          - {os: macOS-latest,   r: 'release',  id: 'bundled-libs', bundled: true}
           - {os: macOS-latest,   r: 'release',  id: 'system-libs',  installer: 'brew install lz4 zstd xxhash'}
           - {os: windows-2022,   r: 'devel',    id: 'bundled-libs'}
           - {os: windows-latest, r: '4.1',      id: 'bundled-libs'}
