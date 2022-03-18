@@ -37,9 +37,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - env:
-            BUILD_INTERNAL_LIBS: ${{ matrix.config.bundled }}
- 
       - run: ${{ matrix.config.installer }}
 
       - uses: r-lib/actions/setup-pandoc@v2
@@ -56,3 +53,5 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
+        env:
+          BUILD_INTERNAL_LIBS: ${{ matrix.config.bundled }}
