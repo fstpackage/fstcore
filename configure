@@ -11,7 +11,7 @@
 # compile LZ4, ZSTD and XXHASH directly from the bundled code in the package
 if [ "$BUILD_INTERNAL_LIBS" = true ]; then
   echo "Found BUILD_INTERNAL_LIBS set to true, compiling bundled LZ4, ZSTD and XXHASH libraries!"
-  cp src/Makevars.win scr/Makevars
+  cp src/Makevars.win src/Makevars
   exit 0
 fi
 
@@ -23,7 +23,7 @@ PKG_CFLAGS=""
 PKG_LZ4_CONFIG_NAME="liblz4"
 PKG_LZ4_DEB_NAME="liblz4-dev"
 PKG_LZ4_RPM_NAME="liblz4-devel"
-PKG_LZ4_CSW_NAME="liblz4"
+PKG_LZ4_CSW_NAME="liblz4_dev"
 PKG_LZ4_OSX_NAME="lz4"
 PKG_LZ4_TEST_HEADER="<lz4.h>"
 PKG_LZ4_LIBS="-llz4"
@@ -32,7 +32,7 @@ PKG_LZ4_LIBS="-llz4"
 PKG_ZSTD_CONFIG_NAME="libzstd"
 PKG_ZSTD_DEB_NAME="libzstd-dev"
 PKG_ZSTD_RPM_NAME="libzstd-devel"
-PKG_ZSTD_CSW_NAME="libzstd"
+PKG_ZSTD_CSW_NAME="libzstd-dev"
 PKG_ZSTD_OSX_NAME="zstd"
 PKG_ZSTD_TEST_HEADER="<zstd.h>"
 PKG_ZSTD_LIBS="-lzstd"
@@ -41,7 +41,7 @@ PKG_ZSTD_LIBS="-lzstd"
 PKG_XXHASH_CONFIG_NAME="libxxhash"
 PKG_XXHASH_DEB_NAME="libxxhash-dev"
 PKG_XXHASH_RPM_NAME="libxxhash-devel"
-PKG_XXHASH_CSW_NAME="libxxhash"
+PKG_XXHASH_CSW_NAME="libxxhash-dev"
 PKG_XXHASH_OSX_NAME="xxhash"
 PKG_XXHASH_TEST_HEADER="<xxhash.h>"
 PKG_XXHASH_LIBS="-lxxhash"
