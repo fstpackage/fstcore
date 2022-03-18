@@ -89,6 +89,8 @@ if [ $R_CONFIG_ERROR ]; then
   echo "PATH and PKG_CONFIG_PATH contains a $PKG_LZ4_CONFIG_NAME.pc file. If pkg-config"
   echo "is unavailable you can set INCLUDE_LZ4_DIR and LIB_LZ4_DIR manually via:"
   echo "R CMD INSTALL --configure-vars='INCLUDE_LZ4_DIR=... LIB_LZ4_DIR=...'"
+  echo "Alternatively, you can build the required libraries directly from bundled code by"
+  echo "setting BUILD_INTERNAL_LIBS to true"
   echo "--------------------------------------------------------------------"
   exit 1;
 fi
@@ -127,6 +129,8 @@ if [ $R_CONFIG_ERROR ]; then
   echo "PATH and PKG_CONFIG_PATH contains a $PKG_ZSTD_CONFIG_NAME.pc file. If pkg-config"
   echo "is unavailable you can set INCLUDE_ZSTD_DIR and LIB_ZSTD_DIR manually via:"
   echo "R CMD INSTALL --configure-vars='INCLUDE_ZSTD_DIR=... LIB_ZSTD_DIR=...'"
+  echo "Alternatively, you can build the required libraries directly from bundled code by"
+  echo "setting BUILD_INTERNAL_LIBS to true"
   echo "--------------------------------------------------------------------"
   exit 1;
 fi
@@ -165,6 +169,8 @@ if [ $R_CONFIG_ERROR ]; then
   echo "PATH and PKG_CONFIG_PATH contains a $PKG_XXHASH_CONFIG_NAME.pc file. If pkg-config"
   echo "is unavailable you can set INCLUDE_XXHASH_DIR and LIB_XXHASH_DIR manually via:"
   echo "R CMD INSTALL --configure-vars='INCLUDE_XXHASH_DIR=... LIB_XXHASH_DIR=...'"
+  echo "Alternatively, you can build the required libraries directly from bundled code by"
+  echo "setting BUILD_INTERNAL_LIBS to true"
   echo "--------------------------------------------------------------------"
   exit 1;
 fi
