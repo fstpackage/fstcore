@@ -21,14 +21,15 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: macOS-latest,   r: 'release', installer: 'brew install lz4 zstd xxhash'}
-          - {os: windows-2022,   r: 'devel'}
-          - {os: windows-latest, r: '4.1'}
-          - {os: windows-latest, r: '3.6'}
-          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
-          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', bundled: true, id: bundled}
-          - {os: ubuntu-20.04,   r: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
-          - {os: ubuntu-18.04,   r: 'oldrel-4', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: macOS-latest,   r: 'release', installer: 'brew install lz4 zstd xxhash', id: system-libs}
+          - {os: macOS-latest,   r: 'release', installer: 'brew install lz4 zstd xxhash', id: bundled-libs}
+          - {os: windows-2022,   r: 'devel', id: bundled-libs}
+          - {os: windows-latest, r: '4.1'id: bundled-libs}
+          - {os: windows-latest, r: '3.6'id: bundled-libs}
+          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', id: system-libs}
+          - {os: ubuntu-20.04,   r: 'devel', http-user-agent: 'release', bundled: true, id: bundled-libs}
+          - {os: ubuntu-20.04,   r: 'release', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', id: system-libs}
+          - {os: ubuntu-18.04,   r: 'oldrel-4', installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', id: system-libs}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
