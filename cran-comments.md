@@ -1,32 +1,22 @@
 
-## Resubmission 2
-
-This resubmission of fstcore (v0.9.8) addresses a note found on CRAN pretests where the URL for codecov.io was moved
-to app.codecov.io.
-
-## Resubmission 1
-
-This resubmission of fstcore (v0.9.8) addresses a note found on CRAN pretests where a trailing forward slash is considered a possibly invalid URL. It also fixes a warning on the ZSTD library due to an example folder which was included unintentionally.
-
 ## Submission
 
-This submission of fstcore (v0.9.8) addresses linking problems occurring on ARM OSX systems due to incorrect
-configuration of Makevars as pointed out by Prof. Ripley.
-
-In addition, the ZSTD library has been updated to version 1.5.2 and the LZ4 library has been updated to version 1.9.3.
+This submission of fstcore (v0.9.10) adds a configure script to the package that checks for the availability of
+system packages lz4, zstd and xxhash. When available, these system packages are used instead of compiling code
+directly from the package sources.
 
 ## Test environments 
 
-* macOS 11.6.2 20G314 using R 4.1.2 on github build infrastructure
+* macOS 11.6.2 20G314 usng R4.1.3 on github build infrastructure
 * Ubuntu 20.04.3 LTS using R version 4.0.5 on github build infrastructure
-* Ubuntu 20.04.3 LTS using R 4.1.2 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R4.1.3 on github build infrastructure
 * Ubuntu 20.04.3 LTS using R dev (2022-01-30 r81596) on github build infrastructure
-* Microsoft Windows Server 2019 10.0.17763 Datacenter using R 4.1.2 on github build infrastructure
+* Microsoft Windows Server 2019 10.0.17763 Datacenter using R4.1.3 on github build infrastructure
 * Ubuntu 18.04 locally using clang-10.0
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
 * Windows 11 local R 3.6.3
-* Windows 11 local R 4.1.2
+* Windows 11 local R4.1.3
 * Singularity-container package for running rchk on Ubuntu 18.04
 * Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
