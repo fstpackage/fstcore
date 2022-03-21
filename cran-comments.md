@@ -7,16 +7,16 @@ directly from the package sources.
 
 ## Test environments 
 
-* macOS 11.6.2 20G314 usng R4.1.3 on github build infrastructure
-* Ubuntu 20.04.3 LTS using R version 4.0.5 on github build infrastructure
-* Ubuntu 20.04.3 LTS using R4.1.3 on github build infrastructure
+* MacOS 11.6.2 20G314 using R 4.1.3 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R 4.0.5 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R 4.1.3 on github build infrastructure
 * Ubuntu 20.04.3 LTS using R dev (2022-01-30 r81596) on github build infrastructure
 * Microsoft Windows Server 2019 10.0.17763 Datacenter using R4.1.3 on github build infrastructure
 * Ubuntu 18.04 locally using clang-10.0
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
 * Windows 11 local R 3.6.3
-* Windows 11 local R4.1.3
+* Windows 11 local R 4.1.3
 * Singularity-container package for running rchk on Ubuntu 18.04
 * Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
