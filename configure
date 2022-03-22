@@ -134,7 +134,7 @@ fi
 
 # Write to Makevars
 PKG_LIBS="$PKG_LZ4_LIBS $PKG_ZSTD_LIBS"
-sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" -e "s|@locallibs@|LOCALLIBS|" src/Makevars.in > src/Makevars
+sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" -e "s|@locallibs@|$LOCALLIBS|" src/Makevars.in > src/Makevars
 
 # Success
 exit 0
