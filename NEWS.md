@@ -1,4 +1,9 @@
 
+# fstcore 0.9.12
+
+This release adds a fallback mechanism for systems that fail the configure script. When systems packages LZ4 or
+ZSTD are missing and configuration fails, the bundled code is used to build the package.
+
 
 # fstcore 0.9.10
 
