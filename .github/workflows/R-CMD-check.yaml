@@ -27,7 +27,7 @@ jobs:
           - {os: windows-latest, r: '4.1',      id: 'bundled-libs'}
           - {os: windows-latest, r: '3.6',      id: 'bundled-libs'}
           - {os: ubuntu-20.04,   r: 'devel',    id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', http-user-agent: 'release'}
-          - {os: ubuntu-20.04,   r: 'devel',    id: 'bundled-libs', http-user-agent: 'release', bundled: true}
+          - {os: ubuntu-20.04,   r: 'devel',    id: 'missing-libs', http-user-agent: 'release'}
           - {os: ubuntu-20.04,   r: 'release',  id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
           - {os: ubuntu-18.04,   r: 'oldrel-4', id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
 
