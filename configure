@@ -62,14 +62,11 @@ elif [ "$PKGCONFIG_LZ4_CFLAGS" ] || [ "$PKGCONFIG_LZ4_LIBS" ]; then
   PKG_LZ4_LIBS=${PKGCONFIG_LZ4_LIBS}
 fi
 
-# debugging
-echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_LZ4_LIBS for LZ4"
-
 # Test configuration
-echo "#include $PKG_LZ4_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+echo "#include $PKG_LZ4_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_LZ4_ERROR=1;
 
 # Customize the error
-if [ $R_CONFIG_ERROR ]; then
+if [ $R_CONFIG_LZ4_ERROR ]; then
   echo "------------------------------- ANTICONF WARNING ---------------------------------"
   echo "Configuration with system library $PKG_LZ4_CONFIG_NAME failed, falling back to"
   echo "$PKG_LZ4_CONFIG_NAME included in the package code. To use the $PKG_LZ4_CONFIG_NAME"
@@ -106,13 +103,10 @@ elif [ "$PKGCONFIG_ZSTD_CFLAGS" ] || [ "$PKGCONFIG_ZSTD_LIBS" ]; then
   PKG_ZSTD_LIBS=${PKGCONFIG_ZSTD_LIBS}
 fi
 
-# debugging
-echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_ZSTD_LIBS for ZSTD"
-
-echo "#include $PKG_ZSTD_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+echo "#include $PKG_ZSTD_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ZSTD_ERROR=1;
 
 # Customize the error
-if [ $R_CONFIG_ERROR ]; then
+if [ $R_CONFIG_ZSTD_ERROR ]; then
   echo "------------------------------- ANTICONF WARNING ---------------------------------"
   echo "Configuration with system library $PKG_ZSTD_CONFIG_NAME failed, falling back to"
   echo "$PKG_ZSTD_CONFIG_NAME included in the package code. To use the $PKG_ZSTD_CONFIG_NAME"

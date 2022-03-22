@@ -18,6 +18,7 @@ LIBZSTD = fstlib/ZSTD/common/entropy_common.o fstlib/ZSTD/common/error_private.o
 	fstlib/ZSTD/common/pool.o fstlib/ZSTD/compress/zstd_opt.o fstlib/ZSTD/dictBuilder/zdict.o \
 	fstlib/ZSTD/compress/zstd_double_fast.o fstlib/ZSTD/compress/hist.o fstlib/ZSTD/dictBuilder/fastcover.o \
 	fstlib/ZSTD/compress/zstd_compress_superblock.o fstlib/ZSTD/common/xxhash.o
+
 LIBCOMPRESSION  = fstlib/compression/compression.o fstlib/compression/compressor.o
 
 LIBFRAME = fstlib/interface/openmphelper.o fstlib/interface/fststore.o fstlib/logical/logical_v10.o \
@@ -40,5 +41,4 @@ libFRAME.a: $(LIBFRAME) libCOMPRESSION.a
 	$(AR) rcs libFRAME.a $(LIBFRAME)
 
 clean:
-	rm -f $(SHLIB) $(OBJECTS) $(LIBLZ4) $(LIBZSTD) $(LIBFRAME) \
-	libFRAME.a libCOMPRESSION.a $(LIBCOMPRESSION)
+	rm -f $(SHLIB) $(OBJECTS) $(LIBLZ4) $(LIBZSTD) $(LIBFRAME) $(LIBCOMPRESSION)
