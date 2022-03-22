@@ -40,5 +40,5 @@ libFRAME.a: $(LIBFRAME) libCOMPRESSION.a
 	$(AR) rcs libFRAME.a $(LIBFRAME)
 
 clean:
-	rm -f $(SHLIB) $(OBJECTS) $(LIBLZ4) libLZ4.a $(LIBZSTD) libZSTD.a $(LIBFRAME) \
+	rm -f $(SHLIB) $(OBJECTS) $(LIBLZ4) $(LIBZSTD) $(LIBFRAME) \
 	libFRAME.a libCOMPRESSION.a $(LIBCOMPRESSION)
