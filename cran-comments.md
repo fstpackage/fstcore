@@ -1,7 +1,8 @@
 
 ## Submission
 
-This submission of fstcore (v0.9.12) adds a fallback mechanism for systems that fail the configure script. When systems packages LZ4 or ZSTD are missing and configuration fails, the bundled code is used to build the package.
+This submission of fstcore (v0.9.12) adds a fallback mechanism for systems that fail the configure script. When system
+packages LZ4 or ZSTD are missing and configuration fails, the bundled code is used to build the fstcore package.
 
 ## Test environments 
 
