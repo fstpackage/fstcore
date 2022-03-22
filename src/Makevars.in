@@ -1,0 +1,24 @@
+
+PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
+PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/LZ4
+CXX_STD      = CXX11
+PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) ./libFRAME.a ./libCOMPRESSION.a @libs@
+
+# libraries
+LIBCOMPRESSION  = fstlib/compression/compression.o fstlib/compression/compressor.o
+
+LIBFRAME = fstlib/interface/openmphelper.o fstlib/interface/fststore.o fstlib/logical/logical_v10.o \
+	fstlib/integer/integer_v8.o fstlib/byte/byte_v12.o fstlib/double/double_v9.o fstlib/character/character_v6.o \
+	fstlib/factor/factor_v7.o fstlib/blockstreamer/blockstreamer_v2.o fstlib/integer64/integer64_v11.o \
+    fstlib/byteblock/byteblock_v13.o fstlib/LZ4/xxhash.o
+
+$(SHLIB): libCOMPRESSION.a libFRAME.a
+
+libCOMPRESSION.a: $(LIBCOMPRESSION)
+	$(AR) rcs libCOMPRESSION.a $(LIBCOMPRESSION)
+
+libFRAME.a: $(LIBFRAME) libCOMPRESSION.a
+	$(AR) rcs libFRAME.a $(LIBFRAME)
+
+clean:
+	rm -f $(SHLIB) $(OBJECTS) $(LIBFRAME) $(LIBCOMPRESSION) libFRAME.a libCOMPRESSION.a

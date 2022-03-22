@@ -1,4 +1,11 @@
 
+
+# fstcore 0.9.10
+
+This release adds a configure script to the package that checks for the availability of system packages lz4, zstd and
+xxhash. When available, these system packages are used instead of compiling code directly from the package sources.
+
+
 # fstcore 0.9.8 (2022-02-04)
 
 This release addresses linking problems occurring on ARM OSX systems due to incorrect configuration of Makevars.

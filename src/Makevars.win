@@ -3,7 +3,7 @@ PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
 PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/LZ4 -Ifstlib/ZSTD -Ifstlib/ZSTD/common \
 	-Ifstlib/ZSTD/decompress -Ifstlib/ZSTD/compress
 CXX_STD      = CXX11
-PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) -L. ./libFRAME.a ./libCOMPRESSION.a ./libLZ4.a ./libZSTD.a
+PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) ./libFRAME.a ./libCOMPRESSION.a ./libLZ4.a ./libZSTD.a
 
 # libraries
 LIBLZ4  = fstlib/LZ4/lz4.o fstlib/LZ4/xxhash.o

@@ -1,0 +1,134 @@
+
+#!/bin/sh
+# Anticonf (tm) script by Mark Klik (2022)
+# This script will query 'pkg-config' for the required cflags and ldflags.
+# If pkg-config is unavailable or does not find the library, try setting
+# INCLUDE_XYZ_DIR and LIB_XYZ_DIR (with XYZ the specific library LZ4, ZSTD or XXHASH)
+# manually via e.g: R CMD INSTALL --configure-vars='INCLUDE_LZ4_DIR=/.../include LIB_LZ4_DIR=/.../lib'
+# Alternatively, you can build the required libraries directly from bundled code by
+# setting BUILD_INTERNAL_LIBS to true
+
+# compile LZ4, ZSTD and XXHASH directly from the bundled code in the package
+if [ "$BUILD_INTERNAL_LIBS" = true ]; then
+  echo "Found BUILD_INTERNAL_LIBS set to true, compiling bundled LZ4 and ZSTD libraries!"
+  cp src/Makevars.win src/Makevars
+  exit 0
+fi
+
+# default cflags
+PKG_CFLAGS=""
+
+
+# library settings LZ4
+PKG_LZ4_CONFIG_NAME="liblz4"
+PKG_LZ4_DEB_NAME="liblz4-dev"
+PKG_LZ4_RPM_NAME="liblz4-devel"
+PKG_LZ4_CSW_NAME="liblz4_dev"
+PKG_LZ4_OSX_NAME="lz4"
+PKG_LZ4_TEST_HEADER="<lz4.h>"
+PKG_LZ4_LIBS="-llz4"
+
+# library settings ZSTD
+PKG_ZSTD_CONFIG_NAME="libzstd"
+PKG_ZSTD_DEB_NAME="libzstd-dev"
+PKG_ZSTD_RPM_NAME="libzstd-devel"
+PKG_ZSTD_CSW_NAME="libzstd-dev"
+PKG_ZSTD_OSX_NAME="zstd"
+PKG_ZSTD_TEST_HEADER="<zstd.h>"
+PKG_ZSTD_LIBS="-lzstd"
+
+
+# find compiler
+CC=`${R_HOME}/bin/R CMD config CC`
+CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
+CPPFLAGS=`${R_HOME}/bin/R CMD config CPPFLAGS`
+
+
+# Use pkg-config if available
+pkg-config ${PKG_LZ4_CONFIG_NAME} --version 2>/dev/null
+if [ $? -eq 0 ]; then
+  PKGCONFIG_LZ4_CFLAGS=`pkg-config --cflags ${PKG_LZ4_CONFIG_NAME}`
+  PKGCONFIG_LZ4_LIBS=`pkg-config --libs ${PKG_LZ4_CONFIG_NAME}`
+fi
+
+# Note that cflags may be empty in case of success
+if [ "$INCLUDE_LZ4_DIR" ] || [ "$LIB_LZ4_DIR" ]; then
+  echo "Found INCLUDE_LZ4_DIR and/or LIB_LZ4_DIR!"
+  PKG_CFLAGS="-I$INCLUDE_LZ4_DIR $PKG_CFLAGS"
+  PKG_LZ4_LIBS="-L$LIB_LZ4_DIR $PKG_LZ4_LIBS"
+elif [ "$PKGCONFIG_LZ4_CFLAGS" ] || [ "$PKGCONFIG_LZ4_LIBS" ]; then
+  echo "Found pkg-config cflags and libs for LZ4!"
+  PKG_CFLAGS="$PKGCONFIG_LZ4_CFLAGS $PKG_CFLAGS"
+  PKG_LZ4_LIBS=${PKGCONFIG_LZ4_LIBS}
+fi
+
+# debugging
+echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_LZ4_LIBS"
+
+# Test configuration
+echo "#include $PKG_LZ4_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+
+# Customize the error
+if [ $R_CONFIG_ERROR ]; then
+  echo "------------------------- ANTICONF ERROR ---------------------------"
+  echo "Configuration failed because $PKG_LZ4_CONFIG_NAME was not found. Try installing:"
+  echo " * deb: $PKG_LZ4_DEB_NAME (Debian, Ubuntu, etc)"
+  echo " * rpm: $PKG_LZ4_RPM_NAME (Fedora, CentOS, RHEL)"
+  echo " * csw: $PKG_LZ4_CSW_NAME (Solaris)"
+  echo " * OSX: $PKG_LZ4_OSX_NAME (macOS)"
+  echo "If $PKG_LZ4_CONFIG_NAME is already installed, check that 'pkg-config' is in your"
+  echo "PATH and PKG_CONFIG_PATH contains a $PKG_LZ4_CONFIG_NAME.pc file. If pkg-config"
+  echo "is unavailable you can set INCLUDE_LZ4_DIR and LIB_LZ4_DIR manually via:"
+  echo "R CMD INSTALL --configure-vars='INCLUDE_LZ4_DIR=... LIB_LZ4_DIR=...'"
+  echo "Alternatively, you can build the required libraries directly from bundled code by"
+  echo "setting BUILD_INTERNAL_LIBS to true"
+  echo "--------------------------------------------------------------------"
+  exit 1;
+fi
+
+pkg-config ${PKG_ZSTD_CONFIG_NAME} --version 2>/dev/null
+if [ $? -eq 0 ]; then
+  PKGCONFIG_ZSTD_CFLAGS=`pkg-config --cflags ${PKG_ZSTD_CONFIG_NAME}`
+  PKGCONFIG_ZSTD_LIBS=`pkg-config --libs ${PKG_ZSTD_CONFIG_NAME}`
+fi
+
+# Note that cflags may be empty in case of success
+if [ "$INCLUDE_ZSTD_DIR" ] || [ "$LIB_ZSTD_DIR" ]; then
+  echo "Found INCLUDE_ZSTD_DIR and/or LIB_ZSTD_DIR!"
+  PKG_CFLAGS="-I$INCLUDE_ZSTD_DIR $PKG_CFLAGS"
+  PKG_ZSTD_LIBS="-L$LIB_ZSTD_DIR $PKG_ZSTD_LIBS"
+elif [ "$PKGCONFIG_ZSTD_CFLAGS" ] || [ "$PKGCONFIG_ZSTD_LIBS" ]; then
+  echo "Found pkg-config cflags and libs for ZSTD!"
+  PKG_CFLAGS="$PKGCONFIG_ZSTD_CFLAGS $PKG_CFLAGS"
+  PKG_ZSTD_LIBS=${PKGCONFIG_ZSTD_LIBS}
+fi
+
+# debugging
+echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_ZSTD_LIBS"
+
+echo "#include $PKG_ZSTD_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+
+# Customize the error
+if [ $R_CONFIG_ERROR ]; then
+  echo "------------------------- ANTICONF ERROR ---------------------------"
+  echo "Configuration failed because $PKG_ZSTD_CONFIG_NAME was not found. Try installing:"
+  echo " * deb: $PKG_ZSTD_DEB_NAME (Debian, Ubuntu, etc)"
+  echo " * rpm: $PKG_ZSTD_RPM_NAME (Fedora, CentOS, RHEL)"
+  echo " * csw: $PKG_ZSTD_CSW_NAME (Solaris)"
+  echo " * OSX: $PKG_ZSTD_OSX_NAME (macOS)"
+  echo "If $PKG_ZSTD_CONFIG_NAME is already installed, check that 'pkg-config' is in your"
+  echo "PATH and PKG_CONFIG_PATH contains a $PKG_ZSTD_CONFIG_NAME.pc file. If pkg-config"
+  echo "is unavailable you can set INCLUDE_ZSTD_DIR and LIB_ZSTD_DIR manually via:"
+  echo "R CMD INSTALL --configure-vars='INCLUDE_ZSTD_DIR=... LIB_ZSTD_DIR=...'"
+  echo "Alternatively, you can build the required libraries directly from bundled code by"
+  echo "setting BUILD_INTERNAL_LIBS to true"
+  echo "--------------------------------------------------------------------"
+  exit 1;
+fi
+
+# Write to Makevars
+PKG_LIBS="$PKG_LZ4_LIBS $PKG_ZSTD_LIBS"
+sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" src/Makevars.in > src/Makevars
+
+# Success
+exit 0
