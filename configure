@@ -23,7 +23,7 @@ LOCALLIBS=""
 # library settings LZ4
 PKG_LZ4_CONFIG_NAME="liblz4"
 PKG_LZ4_DEB_NAME="liblz4-dev"
-PKG_LZ4_RPM_NAME="liblz4-devel"
+PKG_LZ4_RPM_NAME="lz4-devel"
 PKG_LZ4_CSW_NAME="liblz4_dev"
 PKG_LZ4_OSX_NAME="lz4"
 PKG_LZ4_TEST_HEADER="<lz4.h>"
