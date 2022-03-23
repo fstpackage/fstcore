@@ -1,22 +1,21 @@
 
 ## Submission
 
-This submission of fstcore (v0.9.10) adds a configure script to the package that checks for the availability of
-system packages lz4, zstd and xxhash. When available, these system packages are used instead of compiling code
-directly from the package sources.
+This submission of fstcore (v0.9.12) adds a fallback mechanism for systems that fail the configure script. When system
+packages LZ4 or ZSTD are missing and configuration fails, the bundled code is used to build the fstcore package.
 
 ## Test environments 
 
-* macOS 11.6.2 20G314 usng R4.1.3 on github build infrastructure
-* Ubuntu 20.04.3 LTS using R version 4.0.5 on github build infrastructure
-* Ubuntu 20.04.3 LTS using R4.1.3 on github build infrastructure
+* MacOS 11.6.2 20G314 using R 4.1.3 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R 4.0.5 on github build infrastructure
+* Ubuntu 20.04.3 LTS using R 4.1.3 on github build infrastructure
 * Ubuntu 20.04.3 LTS using R dev (2022-01-30 r81596) on github build infrastructure
 * Microsoft Windows Server 2019 10.0.17763 Datacenter using R4.1.3 on github build infrastructure
 * Ubuntu 18.04 locally using clang-10.0
 * Docker with the rocker/r-devel-ubsan-clang instrumented image
 * Local Ubuntu with instrumented image using clang-10
 * Windows 11 local R 3.6.3
-* Windows 11 local R4.1.3
+* Windows 11 local R 4.1.3
 * Singularity-container package for running rchk on Ubuntu 18.04
 * Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
@@ -27,7 +26,8 @@ There are no errors or warnings.
 
 ## revdepcheck results
 
-We checked 1 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 2 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
  * We failed to check 0 packages
+

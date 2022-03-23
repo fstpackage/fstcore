@@ -4,8 +4,8 @@ Title: R Bindings to the 'Fstlib' Library
 Description: The 'fstlib' library provides multithreaded serialization of compressed data frames using the
     'fst' format. The 'fst' format allows for random access of stored data and compression with the 'LZ4' and 'ZSTD'
     compressors.
-Version: 0.9.9
-Date: 2022-03-18
+Version: 0.9.12
+Date: 2022-03-22
 Authors@R:
     c(person(given = "Mark",
              family = "Klik",
