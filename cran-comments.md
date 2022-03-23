@@ -1,16 +1,8 @@
 
-## Resubmission
-
-This resubmission of fstcore (v0.9.10) has a configure script that checks for LZ4 and ZSTD system packages, but
-not for the xxhash system package as it is not yet installed on the CRAN build systems. As described in
-the text on external libraries (https://cran.r-project.org/web/packages/external_libs.html), I will send a request
-to include the xxhash package in a mail to CRAN@R-project.org.
-
 ## Submission
 
-This submission of fstcore (v0.9.10) adds a configure script to the package that checks for the availability of
-system packages lz4, zstd and xxhash. When available, these system packages are used instead of compiling code
-directly from the package sources.
+This submission of fstcore (v0.9.12) adds a fallback mechanism for systems that fail the configure script. When system
+packages LZ4 or ZSTD are missing and configuration fails, the bundled code is used to build the fstcore package.
 
 ## Test environments 
 

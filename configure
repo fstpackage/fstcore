@@ -17,6 +17,7 @@ fi
 
 # default cflags
 PKG_CFLAGS=""
+LOCALLIBS=""
 
 
 # library settings LZ4
@@ -43,9 +44,8 @@ CC=`${R_HOME}/bin/R CMD config CC`
 CFLAGS=`${R_HOME}/bin/R CMD config CFLAGS`
 CPPFLAGS=`${R_HOME}/bin/R CMD config CPPFLAGS`
 
-
 # Use pkg-config if available
-pkg-config ${PKG_LZ4_CONFIG_NAME} --version 2>/dev/null
+pkg-config --version 2>/dev/null
 if [ $? -eq 0 ]; then
   PKGCONFIG_LZ4_CFLAGS=`pkg-config --cflags ${PKG_LZ4_CONFIG_NAME}`
   PKGCONFIG_LZ4_LIBS=`pkg-config --libs ${PKG_LZ4_CONFIG_NAME}`
@@ -55,23 +55,22 @@ fi
 if [ "$INCLUDE_LZ4_DIR" ] || [ "$LIB_LZ4_DIR" ]; then
   echo "Found INCLUDE_LZ4_DIR and/or LIB_LZ4_DIR!"
   PKG_CFLAGS="-I$INCLUDE_LZ4_DIR $PKG_CFLAGS"
-  PKG_LZ4_LIBS="-L$LIB_LZ4_DIR $PKG_LZ4_LIBS"
+  PKG_LZ4_LIBS="-L$LIB_LZ4_DIR"
 elif [ "$PKGCONFIG_LZ4_CFLAGS" ] || [ "$PKGCONFIG_LZ4_LIBS" ]; then
   echo "Found pkg-config cflags and libs for LZ4!"
   PKG_CFLAGS="$PKGCONFIG_LZ4_CFLAGS $PKG_CFLAGS"
   PKG_LZ4_LIBS=${PKGCONFIG_LZ4_LIBS}
 fi
 
-# debugging
-echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_LZ4_LIBS"
-
 # Test configuration
-echo "#include $PKG_LZ4_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+echo "#include $PKG_LZ4_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_LZ4_ERROR=1;
 
 # Customize the error
-if [ $R_CONFIG_ERROR ]; then
-  echo "------------------------- ANTICONF ERROR ---------------------------"
-  echo "Configuration failed because $PKG_LZ4_CONFIG_NAME was not found. Try installing:"
+if [ $R_CONFIG_LZ4_ERROR ]; then
+  echo "------------------------------- ANTICONF WARNING ---------------------------------"
+  echo "Configuration with system library $PKG_LZ4_CONFIG_NAME failed, falling back to"
+  echo "$PKG_LZ4_CONFIG_NAME included in the package code. To use the $PKG_LZ4_CONFIG_NAME"
+  echo "system library, try installing:"
   echo " * deb: $PKG_LZ4_DEB_NAME (Debian, Ubuntu, etc)"
   echo " * rpm: $PKG_LZ4_RPM_NAME (Fedora, CentOS, RHEL)"
   echo " * csw: $PKG_LZ4_CSW_NAME (Solaris)"
@@ -80,13 +79,14 @@ if [ $R_CONFIG_ERROR ]; then
   echo "PATH and PKG_CONFIG_PATH contains a $PKG_LZ4_CONFIG_NAME.pc file. If pkg-config"
   echo "is unavailable you can set INCLUDE_LZ4_DIR and LIB_LZ4_DIR manually via:"
   echo "R CMD INSTALL --configure-vars='INCLUDE_LZ4_DIR=... LIB_LZ4_DIR=...'"
-  echo "Alternatively, you can build the required libraries directly from bundled code by"
-  echo "setting BUILD_INTERNAL_LIBS to true"
-  echo "--------------------------------------------------------------------"
-  exit 1;
+  echo "Alternatively, you can force-build the required libraries directly from bundled"
+  echo "code by setting BUILD_INTERNAL_LIBS to true"
+  echo "----------------------------------------------------------------------------------"
+  LOCALLIBS="./libLZ4.a $LOCALLIBS"
+  PKG_LZ4_LIBS=""
 fi
 
-pkg-config ${PKG_ZSTD_CONFIG_NAME} --version 2>/dev/null
+pkg-config --version 2>/dev/null
 if [ $? -eq 0 ]; then
   PKGCONFIG_ZSTD_CFLAGS=`pkg-config --cflags ${PKG_ZSTD_CONFIG_NAME}`
   PKGCONFIG_ZSTD_LIBS=`pkg-config --libs ${PKG_ZSTD_CONFIG_NAME}`
@@ -96,22 +96,21 @@ fi
 if [ "$INCLUDE_ZSTD_DIR" ] || [ "$LIB_ZSTD_DIR" ]; then
   echo "Found INCLUDE_ZSTD_DIR and/or LIB_ZSTD_DIR!"
   PKG_CFLAGS="-I$INCLUDE_ZSTD_DIR $PKG_CFLAGS"
-  PKG_ZSTD_LIBS="-L$LIB_ZSTD_DIR $PKG_ZSTD_LIBS"
+  PKG_ZSTD_LIBS="-L$LIB_ZSTD_DIR"
 elif [ "$PKGCONFIG_ZSTD_CFLAGS" ] || [ "$PKGCONFIG_ZSTD_LIBS" ]; then
   echo "Found pkg-config cflags and libs for ZSTD!"
   PKG_CFLAGS="$PKGCONFIG_ZSTD_CFLAGS $PKG_CFLAGS"
   PKG_ZSTD_LIBS=${PKGCONFIG_ZSTD_LIBS}
 fi
 
-# debugging
-echo "Using PKG_CFLAGS=$PKG_CFLAGS and PKG_LIBS=$PKG_ZSTD_LIBS"
-
-echo "#include $PKG_ZSTD_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ERROR=1;
+echo "#include $PKG_ZSTD_TEST_HEADER" | ${CC} ${CPPFLAGS} ${PKG_CFLAGS} ${CFLAGS} -E -xc - >/dev/null 2>&1 || R_CONFIG_ZSTD_ERROR=1;
 
 # Customize the error
-if [ $R_CONFIG_ERROR ]; then
-  echo "------------------------- ANTICONF ERROR ---------------------------"
-  echo "Configuration failed because $PKG_ZSTD_CONFIG_NAME was not found. Try installing:"
+if [ $R_CONFIG_ZSTD_ERROR ]; then
+  echo "------------------------------- ANTICONF WARNING ---------------------------------"
+  echo "Configuration with system library $PKG_ZSTD_CONFIG_NAME failed, falling back to"
+  echo "$PKG_ZSTD_CONFIG_NAME included in the package code. To use the $PKG_ZSTD_CONFIG_NAME"
+  echo "system library, try installing:"
   echo " * deb: $PKG_ZSTD_DEB_NAME (Debian, Ubuntu, etc)"
   echo " * rpm: $PKG_ZSTD_RPM_NAME (Fedora, CentOS, RHEL)"
   echo " * csw: $PKG_ZSTD_CSW_NAME (Solaris)"
@@ -120,15 +119,16 @@ if [ $R_CONFIG_ERROR ]; then
   echo "PATH and PKG_CONFIG_PATH contains a $PKG_ZSTD_CONFIG_NAME.pc file. If pkg-config"
   echo "is unavailable you can set INCLUDE_ZSTD_DIR and LIB_ZSTD_DIR manually via:"
   echo "R CMD INSTALL --configure-vars='INCLUDE_ZSTD_DIR=... LIB_ZSTD_DIR=...'"
-  echo "Alternatively, you can build the required libraries directly from bundled code by"
-  echo "setting BUILD_INTERNAL_LIBS to true"
-  echo "--------------------------------------------------------------------"
-  exit 1;
+  echo "Alternatively, you can force-build the required libraries directly from bundled"
+  echo "code by setting BUILD_INTERNAL_LIBS to true"
+  echo "----------------------------------------------------------------------------------"
+  LOCALLIBS="./libZSTD.a $LOCALLIBS"
+  PKG_ZSTD_LIBS=""
 fi
 
 # Write to Makevars
 PKG_LIBS="$PKG_LZ4_LIBS $PKG_ZSTD_LIBS"
-sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" src/Makevars.in > src/Makevars
+sed -e "s|@cflags@|$PKG_CFLAGS|" -e "s|@libs@|$PKG_LIBS|" -e "s|@locallibs@|$LOCALLIBS|" src/Makevars.in > src/Makevars
 
 # Success
 exit 0
