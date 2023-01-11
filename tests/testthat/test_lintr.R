@@ -16,7 +16,7 @@ test_that("Package Style", {
 
   skip_if_not_installed("lintr", "2.0.0")
 
-  lints <- with_defaults(
+  lints <- linters_with_defaults(
     line_length_linter = line_length_linter(120),
     cyclocomp_linter = cyclocomp_linter(37)
   )

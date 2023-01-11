@@ -1,8 +1,10 @@
 
 ## Submission
 
-This submission of fstcore (v0.9.12) adds a fallback mechanism for systems that fail the configure script. When system
-packages LZ4 or ZSTD are missing and configuration fails, the bundled code is used to build the fstcore package.
+
+This submission of fstcore (v0.9.14) addresses build problems on systems using gcc 13 due to missing <cstdint>
+includes. With thanks to Prof. Ripley for identifying the problem and offering pointers for the solution.
+
 
 ## Test environments 
 

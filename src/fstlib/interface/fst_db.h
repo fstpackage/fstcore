@@ -74,7 +74,7 @@ public:
 };
 
 
-// A database of fst files with hierarchical structure
+// A database of fst files with hierachiel structure
 class FstDb
 {
 
