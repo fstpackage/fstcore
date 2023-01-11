@@ -10,7 +10,7 @@
     - Travis Linux and OSX
     - AppVeyor (Windows Server)
     - latest R dev version on Windows
-* Build packages with dependencies on fstcore
+* Run revdep checks
 * Merge develop branch into release branch
 * Bump version to even value in DESCRIPTION and check package startup message
 * Update README.md and verify on Github (release)

@@ -2,7 +2,7 @@
 # fstcore 0.9.14
 
 This release addresses build problems on systems using gcc 13 due to missing <cstdint> includes. With thanks to
-Prof. Ripley for identifying the problem and offering pointers for the solution.
+Prof. Ripley for identifying the problem and offering pointers to the solution.
 
 ## Library updates
 

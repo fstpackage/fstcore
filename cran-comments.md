@@ -3,7 +3,7 @@
 
 
 This submission of fstcore (v0.9.14) addresses build problems on systems using gcc 13 due to missing <cstdint>
-includes. With thanks to Prof. Ripley for identifying the problem and offering pointers for the solution.
+includes. With thanks to Prof. Ripley for identifying the problem and offering pointers to the solution.
 
 
 ## Test environments 
@@ -18,6 +18,7 @@ includes. With thanks to Prof. Ripley for identifying the problem and offering p
 * Local Ubuntu with instrumented image using clang-10
 * Windows 11 local R 3.6.3
 * Windows 11 local R 4.1.3
+* Windows 11 local R 4.2.2
 * Singularity-container package for running rchk on Ubuntu 18.04
 * Valgrind on Ubuntu 18.04
 * Rhub (all available systems)
@@ -32,4 +33,3 @@ We checked 2 reverse dependencies, comparing R CMD check results across CRAN and
 
  * We saw 0 new problems
  * We failed to check 0 packages
-
