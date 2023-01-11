@@ -1,4 +1,15 @@
 
+
+# fstcore 0.9.14
+
+This release addresses build problems on systems using gcc 13 due to missing <cstdint> includes. With thanks to
+Prof. Ripley for identifying the problem and offering pointers for the solution.
+
+## Library updates
+
+* `LZ4` has been updated to version 1.9.4
+
+
 # fstcore 0.9.12
 
 This release adds a fallback mechanism for systems that fail the configure script. When systems packages LZ4 or
