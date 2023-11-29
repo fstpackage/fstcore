@@ -26,10 +26,10 @@ jobs:
           - {os: windows-2022,   r: 'devel',    id: 'bundled-libs'}
           - {os: windows-latest, r: '4.1',      id: 'bundled-libs'}
           - {os: windows-latest, r: '3.6',      id: 'bundled-libs'}
-          - {os: ubuntu-20.04,   r: 'devel',    id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', http-user-agent: 'release'}
-          - {os: ubuntu-20.04,   r: 'devel',    id: 'missing-libs', installer: 'sudo apt-get install libzstd-dev libxxhash-dev', http-user-agent: 'release'}
-          - {os: ubuntu-20.04,   r: 'release',  id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
-          - {os: ubuntu-18.04,   r: 'oldrel-4', id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-latest,  r: 'devel',    id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'devel',    id: 'missing-libs', installer: 'sudo apt-get install libzstd-dev libxxhash-dev', http-user-agent: 'release'}
+          - {os: ubuntu-latest,  r: 'release',  id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-20.04,   r: 'oldrel-4', id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
