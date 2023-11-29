@@ -1,11 +1,21 @@
 
-# fstcore 0.9.12
+# fstcore 0.9.14
+
+This release addresses build problems on systems using gcc 13 due to missing <cstdint> includes. With thanks to
+Prof. Ripley for identifying the problem and offering pointers to the solution.
+
+## Library updates
+
+* `LZ4` has been updated to version 1.9.4
+
+
+# fstcore 0.9.12 (2022-03-23)
 
 This release adds a fallback mechanism for systems that fail the configure script. When systems packages LZ4 or
 ZSTD are missing and configuration fails, the bundled code is used to build the package.
 
 
-# fstcore 0.9.10
+# fstcore 0.9.10 (2022-03-21)
 
 This release adds a configure script to the package that checks for the availability of system packages lz4, zstd and
 xxhash. When available, these system packages are used instead of compiling code directly from the package sources.
