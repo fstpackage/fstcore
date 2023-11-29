@@ -54,5 +54,7 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
+        with:
+          args: 'c("--no-manual", "--as-cran")'
         env:
           BUILD_INTERNAL_LIBS: ${{ matrix.config.bundled }}
