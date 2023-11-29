@@ -1,5 +1,5 @@
 
-<img src="fstcore.png" align="right" height="196" width="196" />
+<img src="man/figures/fstcore.png" align="right" height="196" width="196" />
 
 <!-- badges: start -->
   [![CRAN status](https://cranchecks.info/badges/flavor/release/fstcore/)](https://cran.r-project.org/web/checks/check_results_fstcore.html)

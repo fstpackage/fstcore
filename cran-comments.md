@@ -1,26 +1,23 @@
 
 ## Submission
 
-This submission of fstcore (v0.9.14) addresses build problems on systems using gcc 13 due to missing <cstdint>
-includes. With thanks to Prof. Ripley for identifying the problem and offering pointers to the solution.
+This release addresses build problems on systems using clang version 16 or above due to the use of string literals
+in RcppExports.cpp. With thanks to CRAN for identifying the problem and Prof. Eddelbuettel for providing a fix in
+the Rcpp package.
 
 ## Test environments 
 
-* macOS 12.6.2 using R 4.2.2 and bundled ZSTD and LZ4 libs on github build infrastructure
-* macOS 12.6.2 using R 4.2.2 and system ZSTD and LZ4 libs on github build infrastructure
-* Microsoft Windows Server 2022 Datacenter using R 4.2.2 on github build infrastructure
-* Microsoft Windows Server 2022 Datacenter using R 4.1.3 on github build infrastructure
-
-* Ubuntu 20.04.5 LTS using R 4.0.5 on github build infrastructure
-* Ubuntu 20.04.5 LTS using R 4.1.3 on github build infrastructure
-* Ubuntu 20.04.5 LTS using R dev (2023-01-10 r83596) on github build infrastructure
-* Ubuntu 20.04.5 LTS using R dev (2023-01-10 r83596) with missing LZ4 and ZSTD libs on github build infrastructure
-* Ubuntu 20.04.5 LTS using R 4.2.2 on github build infrastructure
-* Ubuntu 18.04.6 LTS using R 3.5.3 on github build infrastructure
+* macOS 12.6.9 using R 4.3.2 and bundled ZSTD and LZ4 libs on github build infrastructure
+* macOS 12.6.9 using R 4.3.2 and system ZSTD and LZ4 libs on github build infrastructure
+* Microsoft Windows Server 2022 Datacenter using R dev (2023-11-28 r85645) on github build infrastructure
+* Microsoft Windows Server 2022 Datacenter using R 4.2.3 on github build infrastructure
+* Microsoft Windows Server 2022 Datacenter using R 3.6.3 on github build infrastructure
+* Ubuntu 22.04.3 LTS using R dev (2023-11-27 r85642) on github build infrastructure
+* Ubuntu 22.04.3 LTS using R dev (2023-11-27 r85642) with missing LZ4 and ZSTD libs on github build infrastructure
+* Ubuntu 22.04.3 LTS using R 4.3.2 on github build infrastructure
+* Ubuntu 20.04.5 LTS using R 3.6.3 on github build infrastructure
 * Local Ubuntu with instrumented image using clang-10
-* Windows 11 local R 3.6.3
-* Windows 11 local R 4.1.3
-* Windows 11 local R 4.2.2
+* Windows 11 local R 4.3.2
 * Rhub (all available systems)
 
 ## R CMD check results
