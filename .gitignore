@@ -1,6 +1,5 @@
 *.a
 *.dll
-*.dll
 *.fea
 *.fst
 *.gcov
