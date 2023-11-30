@@ -1,4 +1,8 @@
 
+
+# fstcore 0.9.17 (in development)
+
+
 # fstcore 0.9.16 (2023-11-29)
 
 This release addresses build problems on systems using clang version 16 or above due to the use of string literals
