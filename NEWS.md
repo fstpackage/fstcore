@@ -1,5 +1,5 @@
 
-# fstcore 0.9.16
+# fstcore 0.9.16 (2023-11-29)
 
 This release addresses build problems on systems using clang version 16 or above due to the use of string literals
 in RcppExports.cpp. With thanks to CRAN for identifying the problem and Prof. Eddelbuettel for providing a fix in
