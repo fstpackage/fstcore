@@ -1,5 +1,5 @@
 
-<img src="fstcore.png" align="right" height="196" width="196" />
+<img src="man/figures/fstcore.png" align="right" height="196" width="196" />
 
 <!-- badges: start -->
   [![CRAN status](https://cranchecks.info/badges/flavor/release/fstcore/)](https://cran.r-project.org/web/checks/check_results_fstcore.html)
@@ -11,7 +11,7 @@
   [![codecov](https://codecov.io/gh/fstpackage/fstcore/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/fstpackage/fstcore)
 <!-- badges: end -->
 
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0/)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mpl-2-0/)
 
 
 ## Overview

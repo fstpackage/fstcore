@@ -7,10 +7,8 @@
     - docker with the rocker/r-devel-ubsan-clang image
     - docker with the rocker/r-devel-san image
     - docker with the rhub/ubuntu-rchk image
-    - Travis Linux and OSX
-    - AppVeyor (Windows Server)
     - latest R dev version on Windows
-* Run revdep checks
+* Run revdep checks using revdepcheck package
 * Merge develop branch into release branch
 * Bump version to even value in DESCRIPTION and check package startup message
 * Update README.md and verify on Github (release)
