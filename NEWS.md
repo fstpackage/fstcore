@@ -1,5 +1,16 @@
 
-# fstcore 0.9.14
+# fstcore 0.9.16
+
+This release addresses build problems on systems using clang version 16 or above due to the use of string literals
+in RcppExports.cpp. With thanks to CRAN for identifying the problem and Prof. Eddelbuettel for providing a fix in
+the Rcpp package.
+
+## Library updates
+
+* `ZSTD` has been updated to version 1.5.5
+
+
+# fstcore 0.9.14 (2023-01-12)
 
 This release addresses build problems on systems using gcc 13 due to missing <cstdint> includes. With thanks to
 Prof. Ripley for identifying the problem and offering pointers to the solution.

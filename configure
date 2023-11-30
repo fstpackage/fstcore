@@ -8,7 +8,7 @@
 # Alternatively, you can build the required libraries directly from bundled code by
 # setting BUILD_INTERNAL_LIBS to true
 
-# compile LZ4, ZSTD and XXHASH directly from the bundled code in the package
+# environment variable to compile LZ4, ZSTD and XXHASH directly from the bundled code in the package
 if [ "$BUILD_INTERNAL_LIBS" = true ]; then
   echo "Found BUILD_INTERNAL_LIBS set to true, compiling bundled LZ4 and ZSTD libraries!"
   cp src/Makevars.win src/Makevars

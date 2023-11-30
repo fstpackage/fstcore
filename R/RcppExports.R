@@ -43,5 +43,5 @@ library_versions <- function() {
 
 # Register entry points for exported C++ functions
 methods::setLoadAction(function(ns) {
-    .Call('_fstcore_RcppExport_registerCCallable', PACKAGE = 'fstcore')
+    .Call(`_fstcore_RcppExport_registerCCallable`)
 })

@@ -1,2 +1,4 @@
 #!/bin/sh
+
+# remove generated files
 rm -f src/Makevars configure.log autobrew
