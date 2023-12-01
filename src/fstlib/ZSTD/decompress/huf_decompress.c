@@ -28,7 +28,7 @@
 *  Constants
 ****************************************************************/
 
-#define ZSTD_DISABLE_ASM 1
+#undef ZSTD_ENABLE_ASM_X86_64_BMI2
 
 #define HUF_DECODER_FAST_TABLELOG 11
 
