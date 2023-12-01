@@ -1,14 +1,8 @@
 
-## Resubmission
-
-This resubmission addresses the note found by CRAN's incoming checks about the MPL-2 licence URL in the README file
-pointing to an invalid address.
-
 ## Submission
 
-This release addresses build problems on systems using clang version 16 or above due to the use of string literals
-in RcppExports.cpp. With thanks to CRAN for identifying the problem and Prof. Eddelbuettel for providing a fix in
-the Rcpp package.
+This release addresses build problems experienced by users with older compilers where assembler code in the
+bundled ZSTD library is not compiled correctly.
 
 ## Test environments 
 
