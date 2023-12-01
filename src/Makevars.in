@@ -11,6 +11,7 @@ LIBZSTD = fstlib/ZSTD/common/entropy_common.o fstlib/ZSTD/common/error_private.o
 	fstlib/ZSTD/compress/fse_compress.o fstlib/ZSTD/compress/zstd_compress_literals.o \
 	fstlib/ZSTD/compress/zstd_compress_sequences.o fstlib/ZSTD/decompress/huf_decompress.o fstlib/ZSTD/compress/huf_compress.o \
 	fstlib/ZSTD/decompress/zstd_ddict.o fstlib/ZSTD/decompress/zstd_decompress.o fstlib/ZSTD/decompress/zstd_decompress_block.o \
+	fstlib/ZSTD/decompress/huf_decompress_amd64.S \
 	fstlib/ZSTD/decompress/zstd_decompress.o fstlib/ZSTD/common/zstd_common.o fstlib/ZSTD/common/debug.o \
 	fstlib/ZSTD/compress/zstd_compress.o fstlib/ZSTD/dictBuilder/cover.o fstlib/ZSTD/dictBuilder/divsufsort.o \
 	fstlib/ZSTD/compress/zstd_fast.o fstlib/ZSTD/compress/zstd_lazy.o fstlib/ZSTD/compress/zstd_ldm.o \
