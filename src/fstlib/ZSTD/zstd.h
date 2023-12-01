@@ -1,6 +1,3 @@
-
-#define ZSTD_DISABLE_ASM
-
 /*
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  * All rights reserved.
