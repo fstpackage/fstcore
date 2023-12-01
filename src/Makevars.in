@@ -4,9 +4,6 @@ PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/LZ4 -Ifstlib/ZSTD -Ifstlib/ZSTD/common \
 	-Ifstlib/ZSTD/decompress -Ifstlib/ZSTD/compress
 PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) ./libFRAME.a ./libCOMPRESSION.a @locallibs@ @libs@
 
-# disable compilation of assembly files in ZSTD
-ZSTD_DISABLE_ASM = 1
-
 # libraries
 LIBLZ4 = fstlib/LZ4/lz4.o fstlib/LZ4/xxhash.o
 
