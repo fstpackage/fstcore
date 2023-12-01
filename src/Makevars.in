@@ -5,7 +5,7 @@ PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/LZ4 -Ifstlib/ZSTD -Ifstlib/ZSTD/common \
 PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) ./libFRAME.a ./libCOMPRESSION.a @locallibs@ @libs@
 
 # libraries
-LIBLZ4  = fstlib/LZ4/lz4.o fstlib/LZ4/xxhash.o
+LIBLZ4 = fstlib/LZ4/lz4.o fstlib/LZ4/xxhash.o
 
 LIBZSTD = fstlib/ZSTD/common/entropy_common.o fstlib/ZSTD/common/error_private.o fstlib/ZSTD/common/fse_decompress.o \
 	fstlib/ZSTD/compress/fse_compress.o fstlib/ZSTD/compress/zstd_compress_literals.o \
