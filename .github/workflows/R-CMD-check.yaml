@@ -23,6 +23,7 @@ jobs:
         config:
           - {os: macOS-latest,   r: 'release',  id: 'bundled-libs', bundled: true}
           - {os: macOS-latest,   r: 'release',  id: 'system-libs',  installer: 'brew install lz4 zstd xxhash'}
+          - {os: macos-11,       r: 'release',  id: 'bundled-libs', bundled: true}
           - {os: windows-2022,   r: 'devel',    id: 'bundled-libs'}
           - {os: windows-latest, r: '4.2',      id: 'bundled-libs'}
           - {os: windows-latest, r: '3.6',      id: 'bundled-libs'}
@@ -30,6 +31,7 @@ jobs:
           - {os: ubuntu-latest,  r: 'devel',    id: 'missing-libs', installer: 'sudo apt-get install libzstd-dev libxxhash-dev', http-user-agent: 'release'}
           - {os: ubuntu-latest,  r: 'release',  id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
           - {os: ubuntu-20.04,   r: 'oldrel-4', id: 'system-libs',  installer: 'sudo apt-get install liblz4-dev libzstd-dev libxxhash-dev'}
+          - {os: ubuntu-20.04,   r: 'oldrel-4', id: 'bundled-libs', bundled: true}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
