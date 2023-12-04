@@ -1,6 +1,10 @@
 
 
-# fstcore 0.9.17 (in development)
+# fstcore 0.9.18 (2023-12-02)
+
+This release addresses build problems experienced by users with older compilers where assembler code in the
+bundled ZSTD library is not compiled correctly. To avoid this problem on later releases, additional platforms
+have been added to the test environment.
 
 
 # fstcore 0.9.16 (2023-11-29)
