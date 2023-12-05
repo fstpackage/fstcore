@@ -13,6 +13,7 @@
 * Bump version to even value in DESCRIPTION and check package startup message
 * Update README.md and verify on Github (release)
 * Update cran_comments.md
+* Disable troubling pragma's and undefine ZSTD_ENABLE_ASM_X86_64_BMI2 in ZSTD library
 * Build docs folder using pkgdown::build_site()
 * Update NEWS.md and make sure to remove '(in development)' in the version title
 * Update version number in NEWS.md
