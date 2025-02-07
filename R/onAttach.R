@@ -52,9 +52,8 @@
     if (!hasopenmp()) {
       packageStartupMessage("(OpenMP was not detected, using single threaded mode)")
     } else if (!is.null(fst_threads_option) && nr_of_threads == fst_threads_option) {
-
       # the number of threads is equal to the amount specified in option fst_threads
-        packageStartupMessage("(OpenMP detected, using ", nr_of_threads, " threads from option 'fst_threads')")
+      packageStartupMessage("(OpenMP detected, using ", nr_of_threads, " threads from option 'fst_threads')")
     } else {
       # number of threads set to default or selected by the user after loading
       packageStartupMessage("(OpenMP detected, using ", nr_of_threads, " threads)")

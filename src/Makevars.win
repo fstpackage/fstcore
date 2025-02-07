@@ -1,11 +1,11 @@
 
 PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
-PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/LZ4 -Ifstlib/ZSTD -Ifstlib/ZSTD/common \
+PKG_CPPFLAGS = -I. -Ifstlib -Ifstlib/ZSTD -Ifstlib/ZSTD/common -Ifstlib/LZ4 \
 	-Ifstlib/ZSTD/decompress -Ifstlib/ZSTD/compress
 PKG_LIBS     = $(SHLIB_OPENMP_CXXFLAGS) ./libFRAME.a ./libCOMPRESSION.a ./libLZ4.a ./libZSTD.a
 
 # libraries
-LIBLZ4 = fstlib/LZ4/lz4.o fstlib/LZ4/xxhash.o
+LIBLZ4 = fstlib/LZ4/lz4.o
 
 LIBZSTD = fstlib/ZSTD/common/entropy_common.o fstlib/ZSTD/common/error_private.o fstlib/ZSTD/common/fse_decompress.o \
 	fstlib/ZSTD/compress/fse_compress.o fstlib/ZSTD/compress/zstd_compress_literals.o \
@@ -23,7 +23,7 @@ LIBCOMPRESSION  = fstlib/compression/compression.o fstlib/compression/compressor
 LIBFRAME = fstlib/interface/openmphelper.o fstlib/interface/fststore.o fstlib/logical/logical_v10.o \
 	fstlib/integer/integer_v8.o fstlib/byte/byte_v12.o fstlib/double/double_v9.o fstlib/character/character_v6.o \
 	fstlib/factor/factor_v7.o fstlib/blockstreamer/blockstreamer_v2.o fstlib/integer64/integer64_v11.o \
-    fstlib/byteblock/byteblock_v13.o fstlib/LZ4/xxhash.o
+    fstlib/byteblock/byteblock_v13.o fstlib/ZSTD/common/xxhash.o
 
 $(SHLIB): libLZ4.a libZSTD.a libCOMPRESSION.a libFRAME.a
 
