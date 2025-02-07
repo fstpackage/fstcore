@@ -1,12 +1,12 @@
 
 ## Submission
 
-This release addresses build problems experienced by users with older compilers where assembler code in the
-bundled ZSTD library is not compiled correctly. To avoid this problem on later releases, additional platforms
-have been added to the test environment.
+This release addresses build problems using the g++ 15 compiler where the <cstdint> header is reported missing.
+Also, the bundled LZ4 and ZSTD libraries have been updated to the latest versions.
 
 ## Test environments 
 
+* Debian unstable using gcc-snapshot 15.0.0 20241220 (experimental)
 * macOS 12.6.9 using R 4.3.2 and bundled ZSTD and LZ4 libs on github build infrastructure
 * macOS 12.6.9 using R 4.3.2 and system ZSTD and LZ4 libs on github build infrastructure
 * macOS 11.7.10 using R 4.3.2 and bundled ZSTD and LZ4 libs on github build infrastructure
