@@ -2,8 +2,8 @@
 # Checks before releasing to CRAN
 
 * Build and test package on:
-    - Clang 10 (on latest Ubuntu)
     - Unstable Ubuntu using gcc-snapshot
+    - Latest clang (on latest Ubuntu)
     - R-hub infrastructure (all available platforms)
     - docker with the rocker/r-devel-ubsan-clang image
     - docker with the rocker/r-devel-san image

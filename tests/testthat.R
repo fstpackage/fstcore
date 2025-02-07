@@ -1,7 +1,6 @@
 
 # required packages
 library(testthat)
-library(fstcore)
 library(lintr)
 
 # run tests

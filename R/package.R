@@ -188,11 +188,9 @@ NULL
 
 #'
 #' @md
-#' @docType package
 #' @name fstcore-package
 #' @aliases fstcore-package
-NULL
-
+"_PACKAGE"
 
 .onLoad <- function(libname, pkgname) {  # nolint
 

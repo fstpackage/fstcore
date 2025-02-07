@@ -2,6 +2,7 @@
 % Please edit documentation in R/package.R
 \docType{package}
 \name{fstcore-package}
+\alias{fstcore}
 \alias{fstcore-package}
 \title{R bindings to the fstlib library}
 \description{
@@ -159,4 +160,25 @@ the terms of the GNU General Public License version 2 as published by the
 Free Software Foundation. This program is dual-licensed; you may select
 either version 2 of the GNU General Public License ("GPL") or BSD license
 ("BSD").
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://www.fstpackage.org/fstcore/}
+  \item Report bugs at \url{https://github.com/fstpackage/fst/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Mark Klik \email{markklik@gmail.com} (Mark Klik is author of the fstcore package and author and copyright holder of the bundled 'fstlib' code) [copyright holder]
+
+Other contributors:
+\itemize{
+  \item Yuta Mori (Yuta Mori is author and copyright holder of the bundled 'libdivsufsort-lite' code, part of 'ZSTD') [contributor, copyright holder]
+  \item Przemyslaw Skibinski (Przemyslaw Skibinski is author and copyright holder of the bundled price functions, part of 'ZSTD') [contributor, copyright holder]
+  \item Tino Reichardt (Tino Reichardt is author and copyright holder of bundled sources from the 'zstdmt' library, part of 'ZSTD') [contributor, copyright holder]
+  \item Yann Collet (Yann Collet is author of the bundled 'LZ4' and 'ZSTD' code and copyright holder of 'LZ4') [contributor, copyright holder]
+  \item Facebook, Inc. (Bundled 'ZSTD' code) [copyright holder]
+}
+
 }
