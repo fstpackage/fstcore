@@ -1,5 +1,9 @@
 
-# fstcore 0.9.19 (in development)
+
+# fstcore 0.10.0
+
+This release addresses build problems using the g++ 15 compiler where the <cstdint> header is reported missing.
+Also, the bundled LZ4 and ZSTD libraries have been updated to the latest versions.
 
 
 # fstcore 0.9.18 (2023-12-02)
