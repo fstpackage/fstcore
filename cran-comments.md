@@ -1,4 +1,10 @@
 
+## Resubmission
+
+This resubmission addresses additional notes on the compiled code where non-API calls to 'Rf_NonNullStringMatch'
+and 'SET_S4_OBJECT' were detected. These functions have been replaced with API calls ('Rf_asS4')
+or have been replaaced with equivalent standard C++ code.
+
 ## Submission
 
 This release addresses build problems using the g++ 15 compiler where the <cstdint> header is reported missing.
