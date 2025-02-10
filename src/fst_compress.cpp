@@ -25,6 +25,7 @@
 #include <interface/fsthash.h>
 
 #include <fst_type_factory.h>
+#include <fst_compress.h>
 
 
 // Calculate the 64-bit xxHash of a raw vector using a default or custom hash seed
@@ -75,35 +76,33 @@ SEXP fsthasher(SEXP rawVec, SEXP seed, SEXP blockHash)
 
 SEXP fstcomp(SEXP rawVec, SEXP compressor, SEXP compression, SEXP hash)
 {
+  int len = Rf_length(compressor);
+  
+  if (len != 1 || !Rf_isString(compressor)) {
+    Rcpp::stop("Please use 'LZ4' or 'ZSTD' to specify the compressor");
+  }
+
+  if (!Rf_isLogical(hash))
+  {
+    Rcpp::stop("Please specify true of false for parameter hash.");
+  }
+
+  COMPRESSION_ALGORITHM algo;
+  
+  if (strcmp(CHAR(STRING_ELT(compressor, 0)), "LZ4") == 0) {
+    algo = COMPRESSION_ALGORITHM::ALGORITHM_LZ4;
+  } else if (strcmp(CHAR(STRING_ELT(compressor, 0)), "ZSTD") == 0) {
+    algo = COMPRESSION_ALGORITHM::ALGORITHM_ZSTD;
+  } else
+  {
+    Rcpp::stop("Unknown compression algorithm selected");
+  }
+
   // avoid using PROTECT statements in C++ classes (which generate rchk errors)
   // this PROTECTED container can be used to hold any R object safely
   SEXP r_container = PROTECT(Rf_allocVector(VECSXP, 1));
 
   std::unique_ptr<TypeFactory> typeFactoryP(new TypeFactory(r_container));
-  COMPRESSION_ALGORITHM algo;
-
-  if (!Rf_isLogical(hash))
-  {
-    UNPROTECT(1);  // r_container
-    Rcpp::stop("Please specify true of false for parameter hash.");
-  }
-
-  SEXP lz4_str  = PROTECT(Rf_mkChar("LZ4"));
-  SEXP zstd_str = PROTECT(Rf_mkChar("ZSTD"));
-
-  if (Rf_NonNullStringMatch(STRING_ELT(compressor, 0), lz4_str))
-  {
-    algo = COMPRESSION_ALGORITHM::ALGORITHM_LZ4;
-  } else if (Rf_NonNullStringMatch(STRING_ELT(compressor, 0), zstd_str))
-  {
-    algo = COMPRESSION_ALGORITHM::ALGORITHM_ZSTD;
-  } else
-  {
-    UNPROTECT(3);  // r_container, lz4_str and zstd_str
-    Rcpp::stop("Unknown compression algorithm selected");
-  }
-
-  UNPROTECT(2);  // lz4_str and zstd_str
 
   FstCompressor fstcompressor(algo, *INTEGER(compression), (ITypeFactory*) typeFactoryP.get());
 
