@@ -1,9 +1,10 @@
 
 
-# fstcore 0.10.0
+# fstcore 0.10.0 (2025-02-10)
 
 This release addresses build problems using the g++ 15 compiler where the <cstdint> header is reported missing.
-Also, the bundled LZ4 and ZSTD libraries have been updated to the latest versions.
+Also, the bundled LZ4 and ZSTD libraries have been updated to the latest versions and some API calls have been
+updated to accommodate more strict C API rules from CRAN.
 
 
 # fstcore 0.9.18 (2023-12-02)
