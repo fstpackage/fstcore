@@ -179,36 +179,39 @@ public:
 
   Int64Column(uint64_t nrOfRows, FstColumnAttribute columnAttribute, short int scale)
   {
-    int64Vec = PROTECT(Rf_allocVector(REALSXP, (R_xlen_t) nrOfRows));
+    SEXP vec = PROTECT(Rf_allocVector(REALSXP, (R_xlen_t) nrOfRows));
 
     // test for nanotime type
     if (columnAttribute == FstColumnAttribute::INT_64_TIME_SECONDS)
     {
-      SEXP classAttr;
-
       if (scale != FstTimeScale::NANOSECONDS)
       {
         throw(std::runtime_error("Timestamp column with unknown scale detected"));
       }
 
-      PROTECT(classAttr = Rf_mkString("nanotime"));
+      // nanotime class attribute
+      SEXP classAttr = PROTECT(Rf_mkString("nanotime"));
       Rf_setAttrib(classAttr, Rf_mkString("package"), Rf_mkString("nanotime"));
+      Rf_classgets(vec, classAttr);
 
-      Rf_classgets(int64Vec, classAttr);
+      // S3 class attribute
+      Rf_setAttrib(vec, Rf_mkString(".S3Class"), Rf_mkString("integer64"));
 
-      Rf_setAttrib(int64Vec, Rf_mkString(".S3Class"), Rf_mkString("integer64"));
-      SET_S4_OBJECT(int64Vec);
+      // Set S4 bit
+      int64Vec = Rf_asS4(vec, TRUE, FALSE);
 
-      UNPROTECT(2);  // int64Vec, classAttr
+      UNPROTECT(2);  // vec, classAttr
       return;
     }
 
     // default int64 column type
     SEXP int64_str = PROTECT(Rf_mkString("integer64"));
 
-    Rf_classgets(int64Vec, int64_str);
+    Rf_classgets(vec, int64_str);
 
-    UNPROTECT(2);  // int64_str, int64Vec
+    int64Vec = vec;
+
+    UNPROTECT(2);  // int64_str, vec
   }
 
   ~Int64Column()
